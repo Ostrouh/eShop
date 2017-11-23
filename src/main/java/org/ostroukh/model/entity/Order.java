@@ -1,5 +1,7 @@
 package org.ostroukh.model.entity;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.ostroukh.model.entity.base.AbstractEntity;
 
 import javax.persistence.*;
@@ -29,9 +31,14 @@ public class Order extends AbstractEntity {
                 inverseJoinColumns = @JoinColumn(name = "PRODUCT_ID", referencedColumnName = "ID"))
     private List<Product> products;
 
-    public Order(User user, List<Product> products) {
+    /**
+     * You shouldn't create order object directly
+     * because order can't exist without user. Use
+     * {@link User} functionality instead
+     * @param user
+     */
+    public Order(User user) {
         this.user = user;
-        this.products = products;
     }
 
     public Order() {
@@ -51,5 +58,29 @@ public class Order extends AbstractEntity {
 
     public void setProducts(List<Product> products) {
         this.products = products;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Order order = (Order) o;
+
+        return new EqualsBuilder()
+                .appendSuper(super.equals(o))
+                .append(user, order.user)
+                .append(products, order.products)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder(17, 37)
+                .appendSuper(super.hashCode())
+                .append(user)
+                .append(products)
+                .toHashCode();
     }
 }

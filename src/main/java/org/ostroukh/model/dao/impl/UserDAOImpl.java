@@ -1,11 +1,24 @@
 package org.ostroukh.model.dao.impl;
 
-import org.ostroukh.model.dao.AbstractDAO;
+import org.ostroukh.model.dao.UserDAO;
 import org.ostroukh.model.entity.User;
 
 import java.util.List;
 
-public class UserDAO implements AbstractDAO<User, Integer> {
+/**
+ * Implementation of UserDAO interface that work with DB by Hibernate
+ * @author Eugene Ostroukh
+ */
+public class UserDAOImpl implements UserDAO {
+    @Override
+    public List<User> getByName(String name) {
+        return null;
+    }
+
+    @Override
+    public List<User> getBySurname(String surname) {
+        return null;
+    }
 
     @Override
     public List<User> getAll() {

@@ -1,7 +1,13 @@
-package org.ostroukh.model.dao;
+package org.ostroukh.model.dao.base;
 
 import java.util.List;
 
+/**
+ * Base interface for all DAO interfaces
+ * @param <E>
+ * @param <K>
+ * @author Eugene Ostroukh
+ */
 public interface AbstractDAO<E, K> {
 
     /**
@@ -11,7 +17,7 @@ public interface AbstractDAO<E, K> {
     List<E> getAll();
 
     /**
-     * Saves or updates a specific entity
+     * Creates or updates a specific entity
      * @param entity
      */
     void save(E entity);

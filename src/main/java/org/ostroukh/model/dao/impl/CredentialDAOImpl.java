@@ -1,11 +1,15 @@
 package org.ostroukh.model.dao.impl;
 
-import org.ostroukh.model.dao.AbstractDAO;
+import org.ostroukh.model.dao.CredentialDAO;
 import org.ostroukh.model.entity.Credential;
 
 import java.util.List;
 
-public class CredentialDAO implements AbstractDAO<Credential, Integer> {
+/**
+ * Implementation of CredentialDAO interface that work with DB by Hibernate
+ * @author Eugene Ostroukh
+ */
+public class CredentialDAOImpl implements CredentialDAO {
     @Override
     public List<Credential> getAll() {
         return null;

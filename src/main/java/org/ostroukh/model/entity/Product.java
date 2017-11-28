@@ -13,13 +13,13 @@ import java.util.Set;
 @Entity
 public class Product extends AbstractEntity {
 
-    @Column(name = "NAME", nullable = false, length = 64)
+    @Column(name = "NAME", nullable = false)
     private String name;
 
     /**
      * Category of product
      */
-    @Column(name = "CATEGORY", nullable = false, length = 64)
+    @Column(name = "CATEGORY", nullable = false)
     private String category;
 
     /**

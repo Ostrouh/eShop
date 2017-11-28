@@ -15,16 +15,16 @@ import java.util.Set;
 @Entity
 public class User extends AbstractEntity {
 
-    @Column(name = "NAME", nullable = false, length = 32)
+    @Column(name = "NAME", nullable = false)
     private String name;
 
-    @Column(name = "SURNAME", nullable = false, length = 32)
+    @Column(name = "SURNAME", nullable = false)
     private String surname;
 
     @Column(name = "ADDRESS", nullable = false)
     private String address;
 
-    @Column(name = "PHONE_NUMBER", nullable = false, length = 16)
+    @Column(name = "PHONE_NUMBER", nullable = false)
     private String phoneNumber;
 
     /**

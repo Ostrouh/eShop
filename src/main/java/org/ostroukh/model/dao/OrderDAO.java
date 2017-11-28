@@ -2,6 +2,8 @@ package org.ostroukh.model.dao;
 
 import org.ostroukh.model.dao.base.AbstractDAO;
 import org.ostroukh.model.entity.Order;
+import org.ostroukh.model.entity.Product;
+import org.ostroukh.model.entity.User;
 
 import java.util.List;
 
@@ -13,15 +15,15 @@ public interface OrderDAO extends AbstractDAO<Order, Integer> {
 
     /**
      * Returns list of orders that belong to specific user
-     * @param userId
-     * @return
+     *
+     * @param user@return
      */
-    List<Order> getByUserId(Integer userId);
+    List<Order> getByUser(User user);
 
     /**
      * Returns list of orders that contains specific product
-     * @param productId
-     * @return
+     *
+     * @param product@return
      */
-    List<Order> getByProductId(Integer productId);
+    List<Order> getByProduct(Product product);
 }

@@ -1,7 +1,12 @@
 package org.ostroukh.model.dao.impl;
 
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.ostroukh.model.dao.CredentialDAO;
 import org.ostroukh.model.entity.Credential;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
@@ -10,23 +15,28 @@ import java.util.List;
  * @author Eugene Ostroukh
  */
 public class CredentialDAOImpl implements CredentialDAO {
+    @Autowired
+    private SessionFactory sessionFactory;
+
+    protected Session getSession() {
+        return sessionFactory.getCurrentSession();
+    }
+
     @Override
     public List<Credential> getAll() {
-        return null;
+        Criteria criteria = getSession().createCriteria(Credential.class);
+        return (List<Credential>) criteria.list();
     }
 
     @Override
     public void save(Credential entity) {
-
+        getSession().saveOrUpdate(entity);
     }
 
     @Override
     public Credential getById(Integer id) {
-        return null;
-    }
-
-    @Override
-    public void delete(Integer id) {
-
+        Criteria criteria = getSession().createCriteria(Credential.class);
+        criteria.add(Restrictions.eq("id",id));
+        return (Credential) criteria.uniqueResult();
     }
 }

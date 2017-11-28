@@ -12,11 +12,12 @@ import java.util.List;
 public interface UserDAO extends AbstractDAO<User, Integer> {
 
     /**
-     * Gets list of users who has specific name
+     * Gets list of users who has specific name and surname
      * @param name
+     * @param surname
      * @return
      */
-    List<User> getByName(String name);
+    List<User> getByNameAndSurname(String name, String surname);
 
     /**
      * Gets list of users who has specific surname

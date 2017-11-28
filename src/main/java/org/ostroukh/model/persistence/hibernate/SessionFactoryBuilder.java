@@ -39,7 +39,7 @@ public class SessionFactoryBuilder {
     }
 
     private Properties loadProperties(){
-        try(InputStream input = SessionFactoryBuilder.class.getClassLoader().getResourceAsStream("hibernate.properties")){
+        try(InputStream input = SessionFactoryBuilder.class.getClassLoader().getResourceAsStream("app.properties")){
             Properties properties = new Properties();
             properties.load(input);
 
@@ -51,6 +51,10 @@ public class SessionFactoryBuilder {
         }
     }
 
+    /**
+     * Returns single instance of session factory
+     * @return
+     */
     public SessionFactory getSessionFactory(){
         return sessionFactory;
     }

@@ -17,7 +17,7 @@ public interface AbstractDAO<E, K> {
     List<E> getAll();
 
     /**
-     * Creates or updates a specific entity
+     * Saves or updates a specific entity
      * @param entity
      */
     void save(E entity);
@@ -30,10 +30,14 @@ public interface AbstractDAO<E, K> {
     E getById(K id);
 
     /**
-     * Removes an entity from the DB by id
+     * Removes an entity from the DB by id.
+     * Default implemented like stub
      * @param id
      */
-    void delete(K id);
+    default void delete(K id){
+    }
+
+
 
 
 }

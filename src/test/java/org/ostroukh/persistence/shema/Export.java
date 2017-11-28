@@ -22,7 +22,7 @@ public class Export {
     public static void exportDatabase(String folder, Class<? extends Dialect> dialect){
         MetadataSources metadata = new MetadataSources(
                 new StandardServiceRegistryBuilder()
-                .applySetting("hibernate.dialect", dialect.getName())
+                .applySetting("db.hibernate.dialect", dialect.getName())
                 .build()
         );
         Set<Class<?>> entityClasses = Sets.newHashSet(User.class, Credential.class, Order.class, Product.class);
@@ -36,5 +36,6 @@ public class Export {
 
     public static void main(String[] args) {
         exportDatabase("", MySQL5Dialect.class);
+        System.exit(0);
     }
 }

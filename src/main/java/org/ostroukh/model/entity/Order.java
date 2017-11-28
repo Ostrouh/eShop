@@ -3,6 +3,7 @@ package org.ostroukh.model.entity;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.ostroukh.model.entity.base.AbstractEntity;
+import org.ostroukh.model.entity.enums.OrderStatus;
 
 import javax.persistence.*;
 import java.util.List;
@@ -11,7 +12,7 @@ import java.util.List;
  * Entity that contains data of a specific order
  * @author Eugene Ostroukh
  */
-@Table(name = "ORDER")
+@Table(name = "ORDERS") // Name of table is "ORDERS" because the "ORDER" is keyword in SQL
 @Entity
 public class Order extends AbstractEntity {
     /**
@@ -32,6 +33,13 @@ public class Order extends AbstractEntity {
     private List<Product> products;
 
     /**
+     * Status of order
+     */
+    @Column(name = "STATUS", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private OrderStatus status;
+
+    /**
      * You shouldn't create order object directly
      * because order can't exist without user. Use
      * {@link User} functionality instead
@@ -39,6 +47,7 @@ public class Order extends AbstractEntity {
      */
     public Order(User user) {
         this.user = user;
+        status = OrderStatus.NEW;
     }
 
     public Order() {
@@ -60,6 +69,14 @@ public class Order extends AbstractEntity {
         this.products = products;
     }
 
+    public OrderStatus getStatus() {
+        return this.status;
+    }
+
+    public void setStatus(OrderStatus status) {
+        this.status = status;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -72,6 +89,7 @@ public class Order extends AbstractEntity {
                 .appendSuper(super.equals(o))
                 .append(user, order.user)
                 .append(products, order.products)
+                .append(status, order.status)
                 .isEquals();
     }
 
@@ -81,6 +99,7 @@ public class Order extends AbstractEntity {
                 .appendSuper(super.hashCode())
                 .append(user)
                 .append(products)
+                .append(status)
                 .toHashCode();
     }
 }

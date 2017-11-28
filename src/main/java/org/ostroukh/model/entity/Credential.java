@@ -1,11 +1,9 @@
 package org.ostroukh.model.entity;
 
 import org.ostroukh.model.entity.base.AbstractEntity;
+import org.ostroukh.model.entity.enums.UserRole;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Entity that contains specific user's data
@@ -24,8 +22,9 @@ public class Credential extends AbstractEntity {
     @Column(name = "EMAIL", nullable = false, length = 64)
     private String email;
 
-    @Column(name = "IS_ADMIN", nullable = false)
-    private boolean isAdmin;
+    @Column(name = "ROLE", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private UserRole role;
 
     @Column(name = "IS_IN_BLACK_LIST", nullable = false)
     private boolean isInBlackList;
@@ -36,11 +35,11 @@ public class Credential extends AbstractEntity {
     @OneToOne(optional = false, mappedBy = "credential")
     private User user;
 
-    public Credential(String login, String password, String email, boolean isAdmin, boolean isInBlackList, User user) {
+    public Credential(String login, String password, String email, UserRole role, boolean isInBlackList, User user) {
         this.login = login;
         this.password = password;
         this.email = email;
-        this.isAdmin = isAdmin;
+        this.role = role;
         this.isInBlackList = isInBlackList;
         this.user = user;
     }
@@ -72,12 +71,12 @@ public class Credential extends AbstractEntity {
         this.email = email;
     }
 
-    public boolean isAdmin() {
-        return isAdmin;
+    public UserRole isRole() {
+        return role;
     }
 
-    public void setAdmin(boolean admin) {
-        isAdmin = admin;
+    public void setRole(UserRole role) {
+        this.role = role;
     }
 
     public boolean isInBlackList() {

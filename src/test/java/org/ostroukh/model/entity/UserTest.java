@@ -40,6 +40,13 @@ public class UserTest {
         assertTrue(false);
     }
 
+    @Test
+    public void testAddCredentialSuccess(){
+        Credential credential = user.addCredential();
+
+        assertEquals(user, credential.getUser());
+    }
+
     private boolean containsOrder(User user, Order order) {
         return user.getOrders().contains(order);
     }

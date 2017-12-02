@@ -7,6 +7,7 @@ import org.hibernate.criterion.Restrictions;
 import org.ostroukh.model.dao.ProductDAO;
 import org.ostroukh.model.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -14,6 +15,7 @@ import java.util.List;
  * Implementation of ProductDAO interface that work with DB by Hibernate
  * @author Eugene Ostroukh
  */
+@Repository("productDAO")
 public class ProductDAOImpl implements ProductDAO {
     @Autowired
     private SessionFactory sessionFactory;
@@ -24,12 +26,16 @@ public class ProductDAOImpl implements ProductDAO {
 
     @Override
     public Product getByName(String name) {
-        return null;
+        Criteria criteria = getSession().createCriteria(Product.class);
+        criteria.add(Restrictions.eq("name",name));
+        return (Product) criteria.uniqueResult();
     }
 
     @Override
     public List<Product> getByCategory(String category) {
-        return null;
+        Criteria criteria = getSession().createCriteria(Product.class);
+        criteria.add(Restrictions.eq("category",category));
+        return criteria.list();
     }
 
     @Override

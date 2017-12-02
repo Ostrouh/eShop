@@ -7,6 +7,7 @@ import org.hibernate.criterion.Restrictions;
 import org.ostroukh.model.dao.UserDAO;
 import org.ostroukh.model.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -14,6 +15,7 @@ import java.util.List;
  * Implementation of UserDAO interface that work with DB by Hibernate
  * @author Eugene Ostroukh
  */
+@Repository("userDAO")
 public class UserDAOImpl implements UserDAO {
     @Autowired
     private SessionFactory sessionFactory;
@@ -29,7 +31,9 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public List<User> getBySurname(String surname) {
-        return null;
+        Criteria criteria = getSession().createCriteria(User.class);
+        criteria.add(Restrictions.eq("surname",surname));
+        return criteria.list();
     }
 
     @Override

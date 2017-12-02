@@ -140,4 +140,14 @@ public class User extends AbstractEntity {
         }
         orders.remove(order);
     }
+
+    /**
+     * Adds specified credential to the user
+     * @param
+     */
+    public Credential addCredential(){
+        Credential credential = new Credential(this);
+
+        return credential;
+    }
 }

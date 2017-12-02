@@ -35,12 +35,13 @@ public class Credential extends AbstractEntity {
     @OneToOne(optional = false, mappedBy = "credential")
     private User user;
 
-    public Credential(String login, String password, String email, UserRole role, boolean isInBlackList, User user) {
-        this.login = login;
-        this.password = password;
-        this.email = email;
-        this.role = role;
-        this.isInBlackList = isInBlackList;
+    /**
+     * You shouldn't create credential object directly
+     * because order can't exist without user. Use
+     * {@link User} functionality instead
+     * @param user
+     */
+    public Credential(User user) {
         this.user = user;
     }
 

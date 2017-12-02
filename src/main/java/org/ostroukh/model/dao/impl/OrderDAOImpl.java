@@ -9,6 +9,7 @@ import org.ostroukh.model.entity.Order;
 import org.ostroukh.model.entity.Product;
 import org.ostroukh.model.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -16,6 +17,7 @@ import java.util.List;
  * Implementation of OrderDAO interface that work with DB by Hibernate
  * @author Eugene Ostroukh
  */
+@Repository("orderDAO")
 public class OrderDAOImpl implements OrderDAO {
     @Autowired
     private SessionFactory sessionFactory;
@@ -25,7 +27,9 @@ public class OrderDAOImpl implements OrderDAO {
     }
     @Override
     public List<Order> getByUser(User user) {
-        return null;
+        Criteria criteria = getSession().createCriteria(Order.class);
+        criteria.add(Restrictions.eq("user_id",user.getId()));
+        return criteria.list();
     }
 
     @Override

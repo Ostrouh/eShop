@@ -41,4 +41,9 @@ public class CredentialDAOImpl implements CredentialDAO {
         criteria.add(Restrictions.eq("id",id));
         return (Credential) criteria.uniqueResult();
     }
+
+    @Override
+    public void delete(Credential entity) {
+        getSession().delete(entity);
+    }
 }

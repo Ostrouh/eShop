@@ -31,11 +31,9 @@ public interface AbstractDAO<E, K> {
 
     /**
      * Removes an entity from the DB by id.
-     * Default implemented like stub
-     * @param id
+     * @param entity
      */
-    default void delete(K id){
-    }
+    void delete(E entity);
 
 
 

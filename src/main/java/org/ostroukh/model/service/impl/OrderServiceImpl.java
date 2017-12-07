@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service("orderService")
 @Transactional
@@ -39,7 +40,12 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Order getOrderById(Integer id) {
-        return dao.getById(id);
+    public Optional<Order> getOrderById(Integer id) {
+        return Optional.ofNullable(dao.getById(id));
+    }
+
+    @Override
+    public void deleteOrder(Order order) {
+        dao.delete(order);
     }
 }

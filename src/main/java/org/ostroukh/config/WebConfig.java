@@ -9,7 +9,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "org.ostroukh")
+@ComponentScan(basePackages = "org.ostroukh.config")
 public class WebConfig {
 
     @Bean

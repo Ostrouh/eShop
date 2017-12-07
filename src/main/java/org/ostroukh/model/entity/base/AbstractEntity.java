@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
  */
 @MappedSuperclass
 public abstract class AbstractEntity {
-    public static final String FIELD_CREATED_AT = "createdAt";
+    public static final String FIELD_MODIFIED_AT = "modifiedAt";
     /**
      * Unique entity identifier
      */
@@ -25,6 +25,12 @@ public abstract class AbstractEntity {
      */
     @Column(name = "CREATED_AT", nullable = false, updatable = false)
     private LocalDateTime createdAt;
+
+    /**
+     * Timestamp of entity update
+     */
+    @Column(name = "MODIFIED_AT", insertable = false)
+    private LocalDateTime modifiedAt;
 
     public int getId() {
         return id;
@@ -42,11 +48,23 @@ public abstract class AbstractEntity {
         this.createdAt = createdAt;
     }
 
+    public LocalDateTime getModifiedAt() {
+        return modifiedAt;
+    }
+
+    public void setModifiedAt(LocalDateTime modifiedAt) {
+        this.modifiedAt = modifiedAt;
+    }
+
+    /**
+     * Sets creation date and last modified date
+     */
     @PrePersist
     public void prePersist(){
         if(getId() == 0){
             setCreatedAt(LocalDateTime.now());
-        }
+            setModifiedAt(LocalDateTime.now());
+        }else setModifiedAt(LocalDateTime.now());
     }
 
     @Override
@@ -60,6 +78,7 @@ public abstract class AbstractEntity {
         return new EqualsBuilder()
                 .append(id, that.id)
                 .append(createdAt, that.createdAt)
+                .append(modifiedAt, that.modifiedAt)
                 .isEquals();
     }
 
@@ -68,6 +87,7 @@ public abstract class AbstractEntity {
         return new HashCodeBuilder(17, 37)
                 .append(id)
                 .append(createdAt)
+                .append(modifiedAt)
                 .toHashCode();
     }
 }

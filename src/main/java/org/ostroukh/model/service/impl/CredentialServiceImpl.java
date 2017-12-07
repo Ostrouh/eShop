@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service("credentialService")
 @Transactional
@@ -27,7 +28,12 @@ public class CredentialServiceImpl implements CredentialService {
     }
 
     @Override
-    public Credential getCredentialById(Integer id) {
-        return dao.getById(id);
+    public Optional<Credential> getCredentialById(Integer id) {
+        return Optional.ofNullable(dao.getById(id));
+    }
+
+    @Override
+    public void deleteCredential(Credential credential) {
+        dao.delete(credential);
     }
 }

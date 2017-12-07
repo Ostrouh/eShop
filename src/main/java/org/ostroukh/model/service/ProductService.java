@@ -3,6 +3,7 @@ package org.ostroukh.model.service;
 import org.ostroukh.model.entity.Product;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ProductService {
 
@@ -14,5 +15,7 @@ public interface ProductService {
 
     void saveProduct(Product product);
 
-    Product getProductById(Integer id);
+    Optional<Product> getProductById(Integer id);
+
+    public void deleteProduct(Product product);
 }

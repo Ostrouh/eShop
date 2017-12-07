@@ -13,13 +13,13 @@ import javax.persistence.*;
 @Entity
 public class Credential extends AbstractEntity {
 
-    @Column(name = "LOGIN", nullable = false)
+    @Column(name = "LOGIN", nullable = false, unique = true)
     private String login;
 
-    @Column(name = "PASSWORD", nullable = false)
+    @Column(name = "PASSWORD", nullable = false, unique = true)
     private String password;
 
-    @Column(name = "EMAIL", nullable = false, length = 64)
+    @Column(name = "EMAIL", nullable = false, length = 64, unique = true)
     private String email;
 
     @Column(name = "ROLE", nullable = false)

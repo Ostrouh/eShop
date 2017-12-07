@@ -3,6 +3,7 @@ package org.ostroukh.model.service;
 import org.ostroukh.model.entity.User;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UserService {
 
@@ -14,8 +15,8 @@ public interface UserService {
 
     void saveUser(User user);
 
-    public User getUserById(Integer id);
+    Optional<User> getUserById(Integer id);
 
-
+    void deleteUser(User user);
 
 }

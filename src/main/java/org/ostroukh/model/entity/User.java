@@ -46,14 +46,12 @@ public class User extends AbstractEntity {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user", orphanRemoval = true)
     private Set<Order> orders;
 
-    public User(String name, String surname, String address, String phoneNumber, int discount, Credential credential, Set<Order> orders) {
+    public User(String name, String surname, String address, String phoneNumber, int discount) {
         this.name = name;
         this.surname = surname;
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.discount = discount;
-        this.credential = credential;
-        this.orders = orders;
     }
 
     public User() {
@@ -147,7 +145,7 @@ public class User extends AbstractEntity {
      */
     public Credential addCredential(){
         Credential credential = new Credential(this);
-
+        this.setCredential(credential);
         return credential;
     }
 }

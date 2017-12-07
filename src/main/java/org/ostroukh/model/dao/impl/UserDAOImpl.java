@@ -24,10 +24,12 @@ public class UserDAOImpl implements UserDAO {
         return sessionFactory.getCurrentSession();
     }
 
+    //not correct
     @Override
     public List<User> getByNameAndSurname(String name, String surname) {
-        return null;
-    }
+        Criteria criteria = getSession().createCriteria(User.class);
+        criteria.add(Restrictions.eq("surname",surname));
+        return criteria.list();    }
 
     @Override
     public List<User> getBySurname(String surname) {
@@ -38,8 +40,8 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public List<User> getAll() {
-        Criteria criteria = getSession().createCriteria(User.class);
-        return (List<User>) criteria.list();
+        return getSession().createQuery("from User").list();
+
     }
 
     @Override
@@ -49,8 +51,11 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public User getById(Integer id) {
-        Criteria criteria = getSession().createCriteria(User.class);
-        criteria.add(Restrictions.eq("id",id));
-        return (User) criteria.uniqueResult();
+        return getSession().get(User.class, id);
+    }
+
+    @Override
+    public void delete(User entity) {
+        getSession().delete(entity);
     }
 }

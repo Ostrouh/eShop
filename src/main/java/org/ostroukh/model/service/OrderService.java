@@ -5,6 +5,7 @@ import org.ostroukh.model.entity.Product;
 import org.ostroukh.model.entity.User;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface OrderService {
 
@@ -16,5 +17,9 @@ public interface OrderService {
 
     void saveOrder(Order order);
 
-    Order getOrderById(Integer id);
+    Optional<Order> getOrderById(Integer id);
+
+    void deleteOrder(Order order);
+
+
 }

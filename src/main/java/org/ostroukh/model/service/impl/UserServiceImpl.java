@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
+
 @Service("userService")
 @Transactional
 public class UserServiceImpl implements UserService {
@@ -35,7 +37,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getUserById(Integer id) {
-        return dao.getById(id);
+    public Optional<User> getUserById(Integer id) {
+        return Optional.ofNullable(dao.getById(id));
+    }
+
+    @Override
+    public void deleteUser(User user) {
+        dao.delete(user);
     }
 }

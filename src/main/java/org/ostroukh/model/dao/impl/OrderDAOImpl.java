@@ -54,4 +54,9 @@ public class OrderDAOImpl implements OrderDAO {
         criteria.add(Restrictions.eq("id",id));
         return (Order) criteria.uniqueResult();
     }
+
+    @Override
+    public void delete(Order entity) {
+        getSession().delete(entity);
+    }
 }

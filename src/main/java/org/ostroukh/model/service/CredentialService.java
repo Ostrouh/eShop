@@ -3,6 +3,7 @@ package org.ostroukh.model.service;
 import org.ostroukh.model.entity.Credential;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface CredentialService {
 
@@ -10,5 +11,7 @@ public interface CredentialService {
 
     void saveCredential(Credential credential);
 
-    Credential getCredentialById(Integer id);
+    Optional<Credential> getCredentialById(Integer id);
+
+    void deleteCredential(Credential credential);
 }

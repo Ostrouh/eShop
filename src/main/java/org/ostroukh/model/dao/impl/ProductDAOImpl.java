@@ -55,4 +55,9 @@ public class ProductDAOImpl implements ProductDAO {
         criteria.add(Restrictions.eq("id",id));
         return (Product) criteria.uniqueResult();
     }
+
+    @Override
+    public void delete(Product entity) {
+        getSession().delete(entity);
+    }
 }

@@ -45,4 +45,9 @@ public class ProductServiceImpl implements ProductService {
     public void deleteProduct(Product product) {
         dao.delete(product);
     }
+
+    @Override
+    public List<Product> getProductByPriceInterval(int min, int max) {
+        return dao.getByPriceInterval(min, max);
+    }
 }

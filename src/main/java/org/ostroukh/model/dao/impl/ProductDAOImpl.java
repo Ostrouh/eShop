@@ -1,9 +1,8 @@
 package org.ostroukh.model.dao.impl;
 
-import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Restrictions;
+import org.hibernate.query.Query;
 import org.ostroukh.model.dao.ProductDAO;
 import org.ostroukh.model.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,22 +25,33 @@ public class ProductDAOImpl implements ProductDAO {
 
     @Override
     public Product getByName(String name) {
-        Criteria criteria = getSession().createCriteria(Product.class);
-        criteria.add(Restrictions.eq("name",name));
-        return (Product) criteria.uniqueResult();
+        Query query = getSession().createQuery("from Product where name = :name");
+        query.setParameter("name", name);
+
+        return (Product) query.uniqueResult();
     }
 
     @Override
     public List<Product> getByCategory(String category) {
-        Criteria criteria = getSession().createCriteria(Product.class);
-        criteria.add(Restrictions.eq("category",category));
-        return criteria.list();
+        Query query = getSession().createQuery("from Product where category = :category");
+        query.setParameter("category", category);
+
+        return query.list();
+    }
+
+    @Override
+    public List<Product> getByPriceInterval(int min, int max) {
+        Query query = getSession().createQuery("from Product P where P.price >= :minPrice and P.price <= :maxPrice" +
+                " order by P.price");
+        query.setParameter("minPrice", min);
+        query.setParameter("maxPrice", max);
+
+        return query.list();
     }
 
     @Override
     public List<Product> getAll() {
-        Criteria criteria = getSession().createCriteria(Product.class);
-        return (List<Product>) criteria.list();
+        return getSession().createQuery("from Product").list();
     }
 
     @Override
@@ -51,9 +61,7 @@ public class ProductDAOImpl implements ProductDAO {
 
     @Override
     public Product getById(Integer id) {
-        Criteria criteria = getSession().createCriteria(Product.class);
-        criteria.add(Restrictions.eq("id",id));
-        return (Product) criteria.uniqueResult();
+        return getSession().get(Product.class, id);
     }
 
     @Override

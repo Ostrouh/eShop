@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public interface OrderService {
 
-    List<Order> getOrderByUser(User user);
+    List<Order> getOrdersByUser(User user);
 
     List<Order> getOrderByProduct(Product product);
 

@@ -17,5 +17,7 @@ public interface ProductService {
 
     Optional<Product> getProductById(Integer id);
 
-    public void deleteProduct(Product product);
+    void deleteProduct(Product product);
+
+    List<Product> getProductByPriceInterval(int min, int max);
 }

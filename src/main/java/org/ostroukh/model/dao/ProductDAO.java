@@ -24,4 +24,12 @@ public interface ProductDAO extends AbstractDAO<Product, Integer> {
      * @return
      */
     List<Product> getByCategory(String category);
+
+    /**
+     * Returns a list of products whose price is in a certain price range
+     * @param min
+     * @param max
+     * @return
+     */
+    List<Product> getByPriceInterval(int min, int max);
 }

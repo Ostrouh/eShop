@@ -1,9 +1,8 @@
 package org.ostroukh.model.dao.impl;
 
-import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Restrictions;
+import org.hibernate.query.Query;
 import org.ostroukh.model.dao.UserDAO;
 import org.ostroukh.model.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,15 +26,19 @@ public class UserDAOImpl implements UserDAO {
     //not correct
     @Override
     public List<User> getByNameAndSurname(String name, String surname) {
-        Criteria criteria = getSession().createCriteria(User.class);
-        criteria.add(Restrictions.eq("surname",surname));
-        return criteria.list();    }
+        Query query = getSession().createQuery("from User where name = :name and surname = :surname");
+        query.setParameter("name", name);
+        query.setParameter("surname", surname);
+
+        return query.list();
+    }
 
     @Override
     public List<User> getBySurname(String surname) {
-        Criteria criteria = getSession().createCriteria(User.class);
-        criteria.add(Restrictions.eq("surname",surname));
-        return criteria.list();
+        Query query = getSession().createQuery("from User where surname = :surname");
+        query.setParameter("surname", surname);
+
+        return query.list();
     }
 
     @Override

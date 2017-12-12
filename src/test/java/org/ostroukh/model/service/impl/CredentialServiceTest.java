@@ -19,21 +19,21 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 /**
- * Contains unit-tests for {@link UserServiceImpl}
+ * Contains unit-tests for {@link CredentialServiceImpl}
  * @author Eugene Ostroukh
  */
 @DirtiesContext
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = TestDataBaseConfig.class)
 @WebAppConfiguration
-public class UserServiceTest {
+public class CredentialServiceTest {
 
     private User user;
     private Credential credential;
-    private final static int DEFAULT_USER_ID = 1;
 
     @Autowired
     private UserService userService;
@@ -50,61 +50,16 @@ public class UserServiceTest {
         userService.saveUser(user);
     }
 
-//    @Test
-//    public void testGetUserById(){
-//        Optional<User> foundUser = userService.getUserById(DEFAULT_USER_ID);
-//
-//        assertTrue(foundUser.isPresent());
-//        assertEquals(foundUser.get().getId(), DEFAULT_USER_ID);
-//
-//    }
-
     @Test
-    public void testGetUserByIdNotFound(){
-        Optional<User> foundUser = userService.getUserById(Integer.MAX_VALUE);
+    public void testGetCredentialByIdNotFound(){
+        Optional<Credential> foundUser = credentialService.getCredentialById(Integer.MAX_VALUE);
 
         assertFalse(foundUser.isPresent());
     }
 
     @Test
-    public void testGetUserBySurnameSuccess(){
-        List<User> fromDB = userService.getUserBySurname("Freeman");
-
-        assertEquals(user.getName(), fromDB.get(0).getName());
-    }
-
-    @Test
-    public void testGetUserByNameAndSurnameSuccess(){
-        List<User> fromDB = userService.getUserByNameAndSurname("Gordon", "Freeman");
-
-        assertEquals(user.getName(), fromDB.get(0).getName());
-        assertEquals(user.getSurname(), fromDB.get(0).getSurname());
-    }
-
-    @Test
-    public void testGetUserByNameAndSurnameNotFound(){
-        List<User> fromDB = userService.getUserByNameAndSurname("NotGordon", "Freeman");
-
-        assertTrue(fromDB.isEmpty());
-    }
-
-    @Test
-    public void testGetUserBySurnameNotFound(){
-        List<User> fromDB = userService.getUserBySurname("NotFreeman");
-
-        assertTrue(fromDB.isEmpty());
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void testSaveNullUser(){
-        userService.saveUser(null);
-
-        assertTrue(false);
-    }
-
-    @Test
-    public void testGetAllUsersSuccess(){
-        List<User> fromDB = userService.getAllUsers();
+    public void testGetAllCredentialsSuccess(){
+        List<Credential> fromDB = credentialService.getAllCredentials();
 
         assertTrue(fromDB.size() == 1);
     }

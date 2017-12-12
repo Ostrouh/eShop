@@ -20,7 +20,7 @@ public class OrderServiceImpl implements OrderService {
     OrderDAO dao;
 
     @Override
-    public List<Order> getOrderByUser(User user) {
+    public List<Order> getOrdersByUser(User user) {
         return dao.getByUser(user);
     }
 

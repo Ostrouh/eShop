@@ -1,9 +1,8 @@
 package org.ostroukh.model.dao.impl;
 
-import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Restrictions;
+import org.hibernate.query.Query;
 import org.ostroukh.model.dao.OrderDAO;
 import org.ostroukh.model.entity.Order;
 import org.ostroukh.model.entity.Product;
@@ -27,9 +26,10 @@ public class OrderDAOImpl implements OrderDAO {
     }
     @Override
     public List<Order> getByUser(User user) {
-        Criteria criteria = getSession().createCriteria(Order.class);
-        criteria.add(Restrictions.eq("user_id",user.getId()));
-        return criteria.list();
+        Query query = getSession().createQuery("from Order where user = :user");
+        query.setParameter("user", user);
+
+        return query.list();
     }
 
     @Override
@@ -39,8 +39,7 @@ public class OrderDAOImpl implements OrderDAO {
 
     @Override
     public List<Order> getAll() {
-        Criteria criteria = getSession().createCriteria(Order.class);
-        return (List<Order>) criteria.list();
+        return getSession().createQuery("from Order").list();
     }
 
     @Override
@@ -50,9 +49,7 @@ public class OrderDAOImpl implements OrderDAO {
 
     @Override
     public Order getById(Integer id) {
-        Criteria criteria = getSession().createCriteria(Order.class);
-        criteria.add(Restrictions.eq("id",id));
-        return (Order) criteria.uniqueResult();
+        return getSession().get(Order.class, id);
     }
 
     @Override

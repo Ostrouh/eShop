@@ -72,7 +72,7 @@ public class Credential extends AbstractEntity {
         this.email = email;
     }
 
-    public UserRole isRole() {
+    public UserRole getRole() {
         return role;
     }
 
@@ -94,5 +94,15 @@ public class Credential extends AbstractEntity {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        return "Credential{"  +
+                "id=" + getId() +
+                "login='" + login + '\'' +
+                ", email='" + email + '\'' +
+                ", role=" + role +
+                '}';
     }
 }

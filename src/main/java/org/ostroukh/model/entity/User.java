@@ -148,4 +148,15 @@ public class User extends AbstractEntity {
         this.setCredential(credential);
         return credential;
     }
+
+    @Override
+    public String toString() {
+        return "User{"  +
+                "id=" + getId()+
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", address='" + address + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                '}';
+    }
 }

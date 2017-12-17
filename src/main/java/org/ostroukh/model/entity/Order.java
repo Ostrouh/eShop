@@ -102,4 +102,12 @@ public class Order extends AbstractEntity {
                 .append(status)
                 .toHashCode();
     }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + getId() +
+                "status=" + status.toString() +
+                '}';
+    }
 }

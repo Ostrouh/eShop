@@ -2,8 +2,7 @@ package org.ostroukh.model.entity.enums;
 
 public enum UserRole {
     ADMIN,
-    CUSTOMER,
-    ANONIMOUS;
+    CUSTOMER;
 
     UserRole() {
     }

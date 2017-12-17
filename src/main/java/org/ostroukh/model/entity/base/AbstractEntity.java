@@ -44,6 +44,7 @@ public abstract class AbstractEntity {
         return createdAt;
     }
 
+
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
@@ -56,15 +57,12 @@ public abstract class AbstractEntity {
         this.modifiedAt = modifiedAt;
     }
 
-    /**
-     * Sets creation date and last modified date
-     */
     @PrePersist
-    public void prePersist(){
-        if(getId() == 0){
+    public void prePersist() {
+        if (getId() == 0) {
             setCreatedAt(LocalDateTime.now());
             setModifiedAt(LocalDateTime.now());
-        }else setModifiedAt(LocalDateTime.now());
+        } else setModifiedAt(LocalDateTime.now());
     }
 
     @Override

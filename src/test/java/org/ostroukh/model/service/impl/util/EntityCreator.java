@@ -13,7 +13,6 @@ public class EntityCreator {
 
     public static User userCreate(){
         User user = new User("Gordon", "Freeman", "BlackMesa", "+1 11 111 11 11", 0 );
-        user.prePersist();
 
         return user;
     }
@@ -25,14 +24,12 @@ public class EntityCreator {
         credential.setEmail("gordon@blackmesa.com");
         credential.setInBlackList(false);
         credential.setRole(UserRole.ADMIN);
-        credential.prePersist();
 
         return credential;
     }
 
     public static Order orderCreate(User user){
         Order order = new Order(user);
-        order.prePersist();
 
         return order;
     }
@@ -44,7 +41,6 @@ public class EntityCreator {
         product.setCategory("Weapon");
         product.setPrice(100);
         product.setQuantity(1);
-        product.prePersist();
 
         return product;
     }

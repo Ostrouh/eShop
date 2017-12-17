@@ -34,6 +34,8 @@ public class ProductServiceTest {
     @Before
     public void setup(){
         product = EntityCreator.productCreate();
+
+        productService.saveProduct(product);
     }
 
     @Test
@@ -41,6 +43,13 @@ public class ProductServiceTest {
         Product fromDB = productService.getProductByName("Weapon crowbar");
 
         assertEquals(product.getName(), fromDB.getName());
+    }
+
+    @Test
+    public void testGetProductByCategorySuccess(){
+        Product fromDB = productService.getProductByName("Weapon crowbar");
+
+        assertEquals(product.getCategory(), fromDB.getCategory());
     }
 
     @After

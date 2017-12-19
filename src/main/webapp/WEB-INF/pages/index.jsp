@@ -28,9 +28,12 @@
         </div><!-- .container-->
 
         <aside class="left-sidebar">
-
             <br/>
             <a href="<c:url value="/catalog"/>">Catalog</a>
+            <br/>
+            <br/>
+            <br/>
+            <a href="<c:url value="/users"/>">Users</a>
             <br/>
             <br/>
             <br/>
@@ -38,7 +41,6 @@
             <br/>
             <br/>
             <br/>
-            <a href="<c:url value="/users"/>">Users</a>
         </aside><!-- .left-sidebar -->
 
     </div><!-- .middle-->

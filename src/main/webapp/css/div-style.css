@@ -26,9 +26,10 @@ body {
 /* Header
 -----------------------------------------------------------------------------*/
 .header {
-	height: 100px;
+	height: 10vh;
 	background: lightcoral;
-	border: 1px solid black;
+	border: 3px solid white;
+	border-radius: 10px;
 }
 
 
@@ -51,7 +52,7 @@ body {
 }
 .content {
 	padding: 0 0 0 270px;
-    min-height: calc(100vh - 180px);
+    /*min-height: calc(100vh - 180px);*/
 }
 
 
@@ -60,12 +61,14 @@ body {
 .left-sidebar {
 	float: left;
 	width: 250px;
-    height: calc(100vh - 180px);
+    min-height: 82vh;
     font-size: 18px;
 	margin-left: -100%;
 	position: relative;
-	background: yellow;
-	border: 1px solid black;
+	background: #f6ff79;
+	border: 3px solid white;
+	border-radius: 10px;
+
 }
 
 
@@ -75,12 +78,14 @@ body {
 	margin: -100px auto 0;
 	min-width: 1000px;
 	max-width: 1920px;
-	height: 80px;
+	height: 8vh;
     font-size: 16px;
 	background: lightgreen;
-	border: 1px solid black;
+	border: 3px solid white;
 	position: relative;
 	text-align: center;
+	border-radius: 10px;
+
 }
 
 /* Tables

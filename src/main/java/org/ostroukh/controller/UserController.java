@@ -6,6 +6,7 @@ import org.ostroukh.model.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -25,7 +26,14 @@ public class UserController {
         model.addAttribute("user", new User());
         model.addAttribute("listUsers", userService.getAllUsers());
 
-        return "users";
+        return "users_management";
+    }
+
+    @RequestMapping("/registration")
+    public String addUser(@ModelAttribute("user") User user){
+        userService.saveUser(user);
+
+        return "redirect:/catalog";
     }
 
     @RequestMapping("editUser/{id}")
@@ -34,10 +42,19 @@ public class UserController {
         if (optional.isPresent()) {
             model.addAttribute("user", optional.get());
         } else {
-            return "users";
+            return "users_management";
         }
-        model.addAttribute("ListUsers", userService.getAllUsers());
+        model.addAttribute("listUsers", userService.getAllUsers());
 
-        return "users";
+        return "users_management";
     }
+
+    @RequestMapping("/users/edit")
+    public String editUser(@ModelAttribute("user") User user){
+        userService.saveUser(user);
+
+        return "redirect:/users";
+    }
+
+
 }

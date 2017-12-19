@@ -23,7 +23,7 @@ public class ProductController {
         model.addAttribute("product", new Product());
         model.addAttribute("listProducts", productService.getAllProducts());
 
-        return "catalog";
+        return "catalog_management";
     }
 
     @RequestMapping("catalog/add")
@@ -39,10 +39,10 @@ public class ProductController {
         if (optional.isPresent()) {
             model.addAttribute("product", optional.get());
         } else {
-            return "catalog";
+            return "catalog_management";
         }
         model.addAttribute("listProducts", productService.getAllProducts());
 
-        return "catalog";
+        return "catalog_management";
     }
 }

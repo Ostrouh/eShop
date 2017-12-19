@@ -30,44 +30,41 @@
                 <br/>
                 <br/>
 
-                <h1>List of users</h1>
-
-                <c:if test="${!empty listUsers}">
+                <h1>Product List</h1>
+                <br>
+                <br>
+                <c:if test="${!empty listProducts}">
                     <table class="tg">
                         <tr>
                             <th width="80">ID</th>
                             <th width="120">Name</th>
-                            <th width="120">Surname</th>
-                            <th width="120">Address</th>
-                            <th width="120">Phone</th>
-                            <th width="120">Role</th>
-                            <th width="120">Status</th>
+                            <th width="120">Category</th>
+                            <th width="120">Quantity</th>
+                            <th width="120">Price</th>
                             <th width="60">Edit</th>
                         </tr>
-                        <c:forEach items="${listUsers}" var="user">
+                        <c:forEach items="${listProducts}" var="product">
                             <tr>
-                                <td>${user.id}</td>
-                                <td>${user.name}</td>
-                                <td>${user.surname}</td>
-                                <td>${user.address}</td>
-                                <td>${user.phoneNumber}</td>
-                                <td>${user.credential.role.toString()}</td>
-                                <td>${user.credential.inBlackList ? "In black list" : "Not in black list"}</td>
-                                <td><a href="<c:url value='/editUser/${product.id}'/>">Edit</a></td>
+                                <td>${product.id}</td>
+                                <td>${product.name}</td>
+                                <td>${product.category}</td>
+                                <td>${product.quantity}</td>
+                                <td>${product.price/100}</td>
+                                <td><a href="<c:url value='/editProduct/${product.id}'/>">Edit</a></td>
                             </tr>
                         </c:forEach>
                     </table>
                 </c:if>
                 <br>
-                <h1>Edit user</h1>
+                <h1>Add product</h1>
                 <br>
                 <br>
 
-                <c:url var="addAction" value="/users"/>
+                <c:url var="addAction" value="/catalog/add"/>
 
-                <form:form action="${addAction}" modelAttribute="user">
+                <form:form action="${addAction}" modelAttribute="product">
                     <table>
-                        <c:if test="${!empty user.name}">
+                        <c:if test="${!empty product.name}">
                             <tr>
                                 <td>
                                     <form:label path="id">
@@ -91,44 +88,47 @@
                                 <form:input path="name"/>
                             </td>
                         </tr>
-
                         <tr>
                             <td>
-                                <form:label path="surname">
-                                    <spring:message text="Surname"/>
+                                <form:label path="category">
+                                    <spring:message text="Category"/>
                                 </form:label>
                             </td>
                             <td>
-                                <form:input path="surname"/>
+                                <form:input path="category"/>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <form:label path="address">
-                                    <spring:message text="Address"/>
+                                <form:label path="quantity">
+                                    <spring:message text="Quantity"/>
                                 </form:label>
                             </td>
                             <td>
-                                <form:input path="address"/>
+                                <form:input path="quantity"/>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <form:label path="phoneNumber">
-                                    <spring:message text="Phone"/>
+                                <form:label path="price">
+                                    <spring:message text="Price"/>
                                 </form:label>
                             </td>
                             <td>
-                                <form:input path="phoneNumber"/>
+                                <form:input path="price"/>
                             </td>
                         </tr>
-
                         <tr>
                             <td colspan="2">
-                                <c:if test="${!empty user.name}">
+                                <c:if test="${!empty product.name}">
                                     <input type="submit"
-                                           value="<spring:message text="Edit user"/>"/>
+                                           value="<spring:message text="Edit product"/>"/>
                                 </c:if>
+                                <c:if test="${empty product.name}">
+                                    <input type="submit"
+                                           value="<spring:message text="Add product"/>"/>
+                                </c:if>
+
                             </td>
                         </tr>
                     </table>
@@ -137,9 +137,12 @@
         </div><!-- .container-->
 
         <aside class="left-sidebar">
-
             <br/>
             <a href="<c:url value="/catalog"/>">Catalog</a>
+            <br/>
+            <br/>
+            <br/>
+            <a href="<c:url value="/users"/>">Users</a>
             <br/>
             <br/>
             <br/>
@@ -147,7 +150,6 @@
             <br/>
             <br/>
             <br/>
-            <a href="<c:url value="/users"/>">Users</a>
         </aside><!-- .left-sidebar -->
 
     </div><!-- .middle-->

@@ -35,16 +35,6 @@ public class Credential extends AbstractEntity {
     @OneToOne(optional = false, mappedBy = "credential")
     private User user;
 
-    /**
-     * You shouldn't create credential object directly
-     * because order can't exist without user. Use
-     * {@link User} functionality instead
-     * @param user
-     */
-    public Credential(User user) {
-        this.user = user;
-    }
-
     public Credential() {
     }
 
@@ -99,8 +89,8 @@ public class Credential extends AbstractEntity {
     @Override
     public String toString() {
         return "Credential{"  +
-                "id=" + getId() +
-                "login='" + login + '\'' +
+                "id='" + getId() + '\'' +
+                ", login='" + login + '\'' +
                 ", email='" + email + '\'' +
                 ", role=" + role +
                 '}';

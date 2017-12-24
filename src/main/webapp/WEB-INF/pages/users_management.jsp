@@ -6,14 +6,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
+    <meta charset="utf-8"/>
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
     <title>EShop</title>
     <style>
         <%@include file="/css/div-style.css"%>
     </style>
-    <meta name="keywords" content="" />
-    <meta name="description" content="" />
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
 
 <body>
 
@@ -82,56 +83,65 @@
                                 </td>
 
                             </tr>
-                        <tr>
-                            <td>
-                                <form:label path="name">
-                                    <spring:message text="Name"/>
-                                </form:label>
-                            </td>
-                            <td>
-                                <form:input path="name"/>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td>
+                                    <form:label path="name">
+                                        <spring:message text="Name"/>
+                                    </form:label>
+                                </td>
+                                <td>
+                                    <form:input path="name"/>
+                                </td>
+                            </tr>
 
-                        <tr>
-                            <td>
-                                <form:label path="surname">
-                                    <spring:message text="Surname"/>
-                                </form:label>
-                            </td>
-                            <td>
-                                <form:input path="surname"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <form:label path="address">
-                                    <spring:message text="Address"/>
-                                </form:label>
-                            </td>
-                            <td>
-                                <form:input path="address"/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <form:label path="phoneNumber">
-                                    <spring:message text="Phone"/>
-                                </form:label>
-                            </td>
-                            <td>
-                                <form:input path="phoneNumber"/>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td colspan="2">
-                                <c:if test="${!empty user.name}">
-                                    <input type="submit"
-                                           value="<spring:message text="Edit user"/>"/>
-                                </c:if>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td>
+                                    <form:label path="surname">
+                                        <spring:message text="Surname"/>
+                                    </form:label>
+                                </td>
+                                <td>
+                                    <form:input path="surname"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <form:label path="address">
+                                        <spring:message text="Address"/>
+                                    </form:label>
+                                </td>
+                                <td>
+                                    <form:input path="address"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <form:label path="phoneNumber">
+                                        <spring:message text="Phone"/>
+                                    </form:label>
+                                </td>
+                                <td>
+                                    <form:input path="phoneNumber"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <form:label path="credential.role">
+                                        <spring:message text="Role"/>
+                                    </form:label>
+                                </td>
+                                <td>
+                                    <form:input path="credential.role"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <c:if test="${!empty user.name}">
+                                        <input type="submit"
+                                               value="<spring:message text="Edit user"/>"/>
+                                    </c:if>
+                                </td>
+                            </tr>
                         </c:if>
                     </table>
                 </form:form>

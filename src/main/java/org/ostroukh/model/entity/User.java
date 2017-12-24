@@ -3,8 +3,8 @@ package org.ostroukh.model.entity;
 import org.ostroukh.model.entity.base.AbstractEntity;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Objects;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.Set;
 
 /**
@@ -113,47 +113,11 @@ public class User extends AbstractEntity {
         this.orders = orders;
     }
 
-    /**
-     * Adds specified order to the user order list
-     * @param
-     */
-    public Order addOrder(){
-        if(orders == null) {
-            orders = new HashSet<>();
-        }
-        Order order = new Order(this);
-        orders.add(order);
-
-        return order;
-    }
-
-    /**
-     * Removes specified order from city order list
-     * @param order
-     */
-    public void removeOrder(Order order) {
-        Objects.requireNonNull(order, "order parameter is not initialized");
-        if(orders == null) {
-            return;
-        }
-        orders.remove(order);
-    }
-
-    /**
-     * Adds specified credential to the user
-     * @param
-     */
-    public Credential addCredential(){
-        Credential credential = new Credential(this);
-        this.setCredential(credential);
-        return credential;
-    }
-
     @Override
     public String toString() {
         return "User{"  +
-                "id=" + getId()+
-                "name='" + name + '\'' +
+                "id='" + getId() + '\'' +
+                ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", address='" + address + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +

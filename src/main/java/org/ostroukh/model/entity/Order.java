@@ -39,17 +39,6 @@ public class Order extends AbstractEntity {
     @Enumerated(EnumType.STRING)
     private OrderStatus status;
 
-    /**
-     * You shouldn't create order object directly
-     * because order can't exist without user. Use
-     * {@link User} functionality instead
-     * @param user
-     */
-    public Order(User user) {
-        this.user = user;
-        status = OrderStatus.NEW;
-    }
-
     public Order() {
     }
 
@@ -106,8 +95,8 @@ public class Order extends AbstractEntity {
     @Override
     public String toString() {
         return "Order{" +
-                "id=" + getId() +
-                "status=" + status.toString() +
+                "id='" + getId() + '\'' +
+                ", status='" + status.toString() + '\'' +
                 '}';
     }
 }

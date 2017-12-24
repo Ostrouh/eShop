@@ -9,7 +9,7 @@
         </Console>
     </Appenders>
     <Loggers>
-        <logger name="org.ostroukh.eShop" level="INFO">
+        <logger name="org.ostroukh" level="DEBUG">
             <AppenderRef ref="fileLog" />
         </logger>
         <Root level="ERROR">

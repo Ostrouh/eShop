@@ -95,7 +95,7 @@ public class UserServiceTest {
         assertTrue(fromDB.isEmpty());
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = NullPointerException.class)
     public void testSaveNullUser(){
         userService.saveUser(null);
 

@@ -42,6 +42,7 @@
                             <th width="120">Quantity</th>
                             <th width="120">Price</th>
                             <th width="60">Edit</th>
+                            <th width="60">Delete</th>
                         </tr>
                         <c:forEach items="${listProducts}" var="product">
                             <tr>
@@ -51,6 +52,7 @@
                                 <td>${product.quantity}</td>
                                 <td>${product.price/100}</td>
                                 <td><a href="<c:url value='/editProduct/${product.id}'/>">Edit</a></td>
+                                <td><a href="<c:url value='/deleteProduct/${product.id}'/>">Delete</a></td>
                             </tr>
                         </c:forEach>
                     </table>
@@ -87,6 +89,9 @@
                             <td>
                                 <form:input path="name"/>
                             </td>
+                            <td>
+                                <form:errors path="name" cssClass="error"/>
+                            </td>
                         </tr>
                         <tr>
                             <td>
@@ -95,7 +100,10 @@
                                 </form:label>
                             </td>
                             <td>
-                                <form:input path="category"/>
+                                <form:select path="category">
+                                    <form:option value="FIRST" label="First"/>
+                                    <form:option value="SECOND" label="Second"/>
+                                </form:select>
                             </td>
                         </tr>
                         <tr>

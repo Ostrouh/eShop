@@ -1,8 +1,12 @@
 package org.ostroukh.model.entity;
 
 import org.ostroukh.model.entity.base.AbstractEntity;
+import org.ostroukh.model.entity.enums.ProductCategory;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.util.Set;
 
 /**
@@ -13,14 +17,17 @@ import java.util.Set;
 @Entity
 public class Product extends AbstractEntity {
 
+    @Size(min=3, max=16, message = "Invalid length")
     @Column(name = "NAME", nullable = false)
     private String name;
 
     /**
      * Category of product
      */
+    @NotBlank
     @Column(name = "CATEGORY", nullable = false)
-    private String category;
+    @Enumerated(EnumType.STRING)
+    private ProductCategory category;
 
     /**
      * Unit price
@@ -40,7 +47,7 @@ public class Product extends AbstractEntity {
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "products")
     private Set<Order> orders;
 
-    public Product(String name, String category, int price, int quantity, Set<Order> orders) {
+    public Product(String name, ProductCategory category, int price, int quantity, Set<Order> orders) {
         this.name = name;
         this.category = category;
         this.price = price;
@@ -59,11 +66,11 @@ public class Product extends AbstractEntity {
         this.name = name;
     }
 
-    public String getCategory() {
+    public ProductCategory getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(ProductCategory category) {
         this.category = category;
     }
 
@@ -86,11 +93,11 @@ public class Product extends AbstractEntity {
     @Override
     public String toString() {
         return "Product{"  +
-                "id=" + getId() +
-                "name='" + name + '\'' +
+                "id='" + getId() + '\'' +
+                ", name='" + name + '\'' +
                 ", category='" + category + '\'' +
-                ", price=" + price +
-                ", quantity=" + quantity +
+                ", price='" + price + '\'' +
+                ", quantity='" + quantity + '\'' +
                 '}';
     }
 }

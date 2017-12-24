@@ -127,3 +127,12 @@ body {
         .tg .tg-4eph {
             background-color: #f9f9f9
         }
+/* Errors
+------------------------------------------------------------------------------ */
+.error {
+	padding: 10px;
+	color: red;
+	font-size: 14px;
+	font-weight: bold;
+
+}

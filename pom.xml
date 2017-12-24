@@ -6,7 +6,7 @@
 
     <groupId>org.ostroukh</groupId>
     <artifactId>eShop</artifactId>
-    <version>0.2.1-SNAPSHOT</version>
+    <version>0.2.2-SNAPSHOT</version>
     <packaging>war</packaging>
 
     <properties>
@@ -112,7 +112,6 @@
             <artifactId>hibernate-jpa-2.1-api</artifactId>
             <version>1.0.0.Final</version>
         </dependency>
-
         <dependency>
             <groupId>javax.transaction</groupId>
             <artifactId>jta</artifactId>
@@ -129,13 +128,6 @@
             <version>5.1.6</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>1.4.196</version>
-            <scope>test</scope>
-        </dependency>
-
         <!-- for dynamically generating SQL schema-->
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -150,6 +142,18 @@
             <artifactId>hibernate-java8</artifactId>
             <version>${hibernate.version}</version>
             <scope>runtime</scope>
+        </dependency>
+
+        <!-- for data validation-->
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>2.0.0.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>6.0.5.Final</version>
         </dependency>
 
         <dependency>

@@ -28,19 +28,15 @@
         </div><!-- .container-->
 
         <aside class="left-sidebar">
-            <br/>
-            <a href="<c:url value="/catalog"/>">Catalog</a>
-            <br/>
-            <br/>
-            <br/>
-            <a href="<c:url value="/users"/>">Users</a>
-            <br/>
-            <br/>
-            <br/>
-            <a href="<c:url value="/registration"/>">Registration</a>
-            <br/>
-            <br/>
-            <br/>
+            <ul class="main-menu">
+                <li><a href="<c:url value="/catalog"/>">Catalog</a></li>
+
+                <li><a href="<c:url value="/users"/>">Users</a></li>
+
+                <li><a href="<c:url value="/registration"/>">Registration</a></li>
+
+                <li><a href="<c:url value="/login"/>">Login</a></li>
+            </ul>
         </aside><!-- .left-sidebar -->
 
     </div><!-- .middle-->

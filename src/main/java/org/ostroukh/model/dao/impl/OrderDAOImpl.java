@@ -48,7 +48,7 @@ public class OrderDAOImpl implements OrderDAO {
                 .collect(Collectors.toList());
 
         for(Order order: orders){
-            LOGGER.info("Orders by user: " + order);
+            LOGGER.info("Orders by product: " + order);
         }
         return orders;
     }

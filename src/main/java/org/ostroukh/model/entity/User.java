@@ -4,6 +4,7 @@ import org.ostroukh.model.entity.base.AbstractEntity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.util.Set;
 
@@ -15,9 +16,11 @@ import java.util.Set;
 @Entity
 public class User extends AbstractEntity {
 
+    @Size(min=3, max=16, message = "Invalid length")
     @Column(name = "NAME", nullable = false)
     private String name;
 
+    @Size(min=3, max=16, message = "Invalid length")
     @Column(name = "SURNAME", nullable = false)
     private String surname;
 
@@ -36,14 +39,14 @@ public class User extends AbstractEntity {
     /**
      * Credentials of this user
      */
-    @OneToOne(optional = false)
+    @OneToOne(optional = false, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name="CREDENTIAL_ID", unique = true, nullable = false, updatable = false)
     private Credential credential;
 
     /**
      * Set of orders that specific user placed
      */
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user", orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "user", orphanRemoval = true)
     private Set<Order> orders;
 
     public User(String name, String surname, String address, String phoneNumber, int discount) {

@@ -4,6 +4,8 @@ import org.ostroukh.model.entity.base.AbstractEntity;
 import org.ostroukh.model.entity.enums.UserRole;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Size;
 
 /**
  * Entity that contains specific user's data
@@ -13,13 +15,16 @@ import javax.persistence.*;
 @Entity
 public class Credential extends AbstractEntity {
 
+    @Size(min=3, max=16, message = "Invalid length")
     @Column(name = "LOGIN", nullable = false, unique = true)
     private String login;
 
+    @Size(min=3, message = "Very short password length")
     @Column(name = "PASSWORD", nullable = false, unique = true)
     private String password;
 
-    @Column(name = "EMAIL", nullable = false, length = 64, unique = true)
+
+    @Column(name = "EMAIL", length = 64, unique = true)
     private String email;
 
     @Column(name = "ROLE", nullable = false)

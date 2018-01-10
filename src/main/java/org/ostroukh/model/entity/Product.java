@@ -24,7 +24,6 @@ public class Product extends AbstractEntity {
     /**
      * Category of product
      */
-    @NotBlank
     @Column(name = "CATEGORY", nullable = false)
     @Enumerated(EnumType.STRING)
     private ProductCategory category;

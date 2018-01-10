@@ -7,7 +7,8 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
     <title>Registration</title>
     <style>
         <%@include file="/css/div-style.css"%>
@@ -29,7 +30,7 @@
             <main class="content">
                 <h1>Fill in the blanks</h1>
 
-                <c:url var="addAction" value="/registration"/>
+                <c:url var="addAction" value="/sign-up"/>
 
                 <form:form action="${addAction}" modelAttribute="user">
                     <table>
@@ -78,7 +79,7 @@
                         <tr>
                             <td colspan="2">
                                     <input type="submit"
-                                           value="<spring:message text="registration"/>"/>
+                                           value="<spring:message text="sign-up"/>"/>
                             </td>
                         </tr>
                     </table>
@@ -89,17 +90,9 @@
         </div><!-- .container-->
 
         <aside class="left-sidebar">
+            <ul class="main-menu">
 
-            <br/>
-            <a href="<c:url value="/catalog"/>">Catalog</a>
-            <br/>
-            <br/>
-            <br/>
-            <a href="<c:url value="/registration"/>">Registration</a>
-            <br/>
-            <br/>
-            <br/>
-            <a href="<c:url value="/users"/>">Users</a>
+            </ul>
         </aside><!-- .left-sidebar -->
 
     </div><!-- .middle-->

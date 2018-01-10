@@ -29,13 +29,13 @@ public class ProductController {
         model.addAttribute("product", new Product());
         model.addAttribute("listProducts", productService.getAllProducts());
 
-        return "catalog_management";
+        return "admin/catalog_management";
     }
 
     @RequestMapping("catalog/add")
     public String addProduct(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult){
         if (bindingResult.hasErrors()){
-            return "catalog_management";
+            return "admin/catalog_management";
         }
 
         productService.saveProduct(product);
@@ -49,11 +49,11 @@ public class ProductController {
         if (optional.isPresent()) {
             model.addAttribute("product", optional.get());
         } else {
-            return "catalog_management";
+            return "admin/catalog_management";
         }
         model.addAttribute("listProducts", productService.getAllProducts());
 
-        return "catalog_management";
+        return "admin/catalog_management";
     }
 
     @RequestMapping("deleteProduct/{id}")
@@ -64,7 +64,7 @@ public class ProductController {
             model.addAttribute("product", product);
             productService.deleteProduct(product);
         } else {
-            return "catalog_management";
+            return "admin/catalog_management";
         }
         model.addAttribute("listProducts", productService.getAllProducts());
 

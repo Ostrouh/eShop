@@ -1,138 +1,179 @@
 * {
-	margin: 0;
-	padding: 0;
-}
-html {
-	height: 100%;
-}
-article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary {
-	display: block;
-}
-body {
-	font: 12px/18px Arial, sans-serif;
-	height: 100%;
-}
-.wrapper {
-	min-width: 1000px;
-	max-width: 1920px;
-	margin: 0 auto;
-	min-height: 100%;
-	height: auto !important;
-	height: 100%;
-	text-align: center;
+    margin: 0;
+    padding: 0;
 }
 
+html {
+    height: 100%;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary {
+    display: block;
+}
+
+body {
+    font: 12px/18px Arial, sans-serif;
+    height: 100%;
+}
+
+.wrapper {
+    min-width: 1000px;
+    max-width: 1920px;
+    margin: 0 auto;
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    text-align: center;
+}
 
 /* Header
 -----------------------------------------------------------------------------*/
 .header {
-	height: 10vh;
-	background: lightcoral;
-	border: 3px solid white;
-	border-radius: 10px;
+    height: 10vh;
+    background: lightcoral;
+    border: 3px solid white;
+    border-radius: 10px;
 }
-
 
 /* Middle
 -----------------------------------------------------------------------------*/
 .middle {
-	width: 100%;
-	padding: 0 0 100px;
-	position: relative;
-}
-.middle:after {
-	display: table;
-	clear: both;
-	content: '';
-}
-.container {
-	width: 100%;
-	float: left;
-	overflow: hidden;
-}
-.content {
-	padding: 0 0 0 270px;
-    /*min-height: calc(100vh - 180px);*/
+    width: 100%;
+    padding: 0 0 100px;
+    position: relative;
 }
 
+.middle:after {
+    display: table;
+    clear: both;
+    content: '';
+}
+
+.container {
+    width: 100%;
+    float: left;
+    overflow: hidden;
+}
+
+.content {
+    padding: 0 0 0 270px;
+    /*min-height: calc(100vh - 180px);*/
+}
 
 /* Left Sidebar
 -----------------------------------------------------------------------------*/
 .left-sidebar {
-	float: left;
-	width: 250px;
+    float: left;
+    width: 250px;
     min-height: 82vh;
     font-size: 18px;
-	margin-left: -100%;
-	position: relative;
-	background: #f6ff79;
-	border: 3px solid white;
-	border-radius: 10px;
+    margin-left: -100%;
+    position: relative;
+    background: #f5f5f5;
+    border: 3px solid white;
+    border-radius: 10px;
 
 }
-
 
 /* Footer
 -----------------------------------------------------------------------------*/
 .footer {
-	margin: -100px auto 0;
-	min-width: 1000px;
-	max-width: 1920px;
-	height: 8vh;
+    margin: -100px auto 0;
+    min-width: 1000px;
+    max-width: 1920px;
+    height: 8vh;
     font-size: 16px;
-	background: lightgreen;
-	border: 3px solid white;
-	position: relative;
-	text-align: center;
-	border-radius: 10px;
+    background: lightgreen;
+    border: 3px solid white;
+    position: relative;
+    text-align: center;
+    border-radius: 10px;
 
 }
 
 /* Tables
 ------------------------------------------------------------------------------ */
 .tg {
-            border-collapse: collapse;
-            border-spacing: 0;
-            padding: 0 0 0 270px;
-            border-color: #ccc;
-        }
+    border-collapse: collapse;
+    border-spacing: 0;
+    padding: 0 0 0 270px;
+    border-color: #ccc;
+}
 
-        .tg td {
-            font-family: Arial, sans-serif;
-            font-size: 14px;
-            padding: 10px 5px;
-            border-style: solid;
-            border-width: 1px;
-            overflow: hidden;
-            word-break: normal;
-            border-color: #ccc;
-            color: #333;
-            background-color: #fff;
-        }
+.tg tr{
 
-        .tg th {
-            font-family: Arial, sans-serif;
-            font-size: 14px;
-            font-weight: normal;
-            padding: 10px 5px;
-            border-style: solid;
-            border-width: 1px;
-            overflow: hidden;
-            word-break: normal;
-            border-color: #ccc;
-            color: #333;
-            background-color: #f0f0f0;
-        }
+}
 
-        .tg .tg-4eph {
-            background-color: #f9f9f9
-        }
+.tg tr:hover {
+    background: lightgrey;
+}
+
+.tg td {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    padding: 10px 5px;
+    border-style: solid;
+    border-width: 1px;
+    overflow: hidden;
+    word-break: normal;
+    border-color: #ccc;
+    color: #333;
+    background-color: #fff;
+}
+
+.tg th {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    padding: 10px 5px;
+    border-style: solid;
+    border-width: 1px;
+    overflow: hidden;
+    word-break: normal;
+    border-color: #ccc;
+    color: #333;
+    background-color: #f0f0f0;
+}
+
+.tg .tg-4eph {
+    background-color: #f9f9f9
+}
+
 /* Errors
 ------------------------------------------------------------------------------ */
 .error {
-	padding: 10px;
-	color: red;
-	font-size: 14px;
-	font-weight: bold;
+    padding: 10px;
+    color: red;
+    font-size: 14px;
+    font-weight: bold;
 
+}
+
+/* Main menu
+ --------------------------------------------------------------------------------*/
+.main-menu {
+    width: 180px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.main-menu a {
+    display: block;
+    margin-bottom: -1px;
+    padding: 8px 14px;
+    text-decoration: none;
+    color: #0088cc;
+    border: 1px solid #e5e5e5;
+}
+
+.main-menu a:hover {
+    background: deepskyblue;
+}
+
+/* Ссылка в меню внутри элемента с классом .active */
+
+.main-menu .active a {
+    color: white;
+    background: #0088cc;
 }

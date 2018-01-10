@@ -18,7 +18,7 @@ public class Order extends AbstractEntity {
     /**
      * User who placed an order
      */
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "USER_ID")
     private User user;
 ;

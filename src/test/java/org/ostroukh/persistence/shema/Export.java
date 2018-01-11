@@ -7,10 +7,7 @@ import org.hibernate.dialect.Dialect;
 import org.hibernate.dialect.MySQL5Dialect;
 import org.hibernate.tool.hbm2ddl.SchemaExport;
 import org.hibernate.tool.schema.TargetType;
-import org.ostroukh.model.entity.Credential;
-import org.ostroukh.model.entity.Order;
-import org.ostroukh.model.entity.Product;
-import org.ostroukh.model.entity.User;
+import org.ostroukh.model.entity.*;
 
 import java.util.EnumSet;
 import java.util.Set;
@@ -25,7 +22,7 @@ public class Export {
                 .applySetting("hibernate.dialect", dialect.getName())
                 .build()
         );
-        Set<Class<?>> entityClasses = Sets.newHashSet(User.class, Credential.class, Order.class, Product.class);
+        Set<Class<?>> entityClasses = Sets.newHashSet(User.class, Credential.class, Order.class, Product.class, OrderedProduct.class);
         entityClasses.forEach(metadata::addAnnotatedClass);
 
         SchemaExport schema = new SchemaExport();

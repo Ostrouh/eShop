@@ -24,6 +24,7 @@ public class Credential extends AbstractEntity {
     private String password;
 
 
+    @Email
     @Column(name = "EMAIL", length = 64, unique = true)
     private String email;
 

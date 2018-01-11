@@ -6,7 +6,7 @@ import org.ostroukh.model.entity.base.AbstractEntity;
 import org.ostroukh.model.entity.enums.OrderStatus;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 /**
  * Entity that contains data of a specific order
@@ -16,6 +16,12 @@ import java.util.List;
 @Entity
 public class Order extends AbstractEntity {
     /**
+     * The total cost of all products in the order
+     */
+    @Column(name = "TOTAL_COST")
+    private int totalCost;
+
+    /**
      * User who placed an order
      */
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -23,14 +29,10 @@ public class Order extends AbstractEntity {
     private User user;
 ;
     /**
-     * List of products in specific order
-     *In one order there may be many instances of the product, therefore used List.
+     * Set of products in specific order
      */
-    @ManyToMany
-    @JoinTable(name = "ORDER_PRODUCT",
-                joinColumns = @JoinColumn(name = "ORDER_ID", referencedColumnName = "ID"),
-                inverseJoinColumns = @JoinColumn(name = "PRODUCT_ID", referencedColumnName = "ID"))
-    private List<Product> products;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "order")
+    private Set<OrderedProduct> orderedProducts;
 
     /**
      * Status of order
@@ -42,6 +44,14 @@ public class Order extends AbstractEntity {
     public Order() {
     }
 
+    public int getTotalCost() {
+        return totalCost;
+    }
+
+    public void setTotalCost(int totalCosl) {
+        this.totalCost = totalCosl;
+    }
+
     public User getUser() {
         return user;
     }
@@ -50,12 +60,12 @@ public class Order extends AbstractEntity {
         this.user = user;
     }
 
-    public List<Product> getProducts() {
-        return products;
+    public Set<OrderedProduct> getProducts() {
+        return orderedProducts;
     }
 
-    public void setProducts(List<Product> products) {
-        this.products = products;
+    public void setProducts(Set<OrderedProduct> orderedProducts) {
+        this.orderedProducts = orderedProducts;
     }
 
     public OrderStatus getStatus() {
@@ -77,7 +87,7 @@ public class Order extends AbstractEntity {
         return new EqualsBuilder()
                 .appendSuper(super.equals(o))
                 .append(user, order.user)
-                .append(products, order.products)
+                .append(orderedProducts, order.orderedProducts)
                 .append(status, order.status)
                 .isEquals();
     }
@@ -87,7 +97,7 @@ public class Order extends AbstractEntity {
         return new HashCodeBuilder(17, 37)
                 .appendSuper(super.hashCode())
                 .append(user)
-                .append(products)
+                .append(orderedProducts)
                 .append(status)
                 .toHashCode();
     }

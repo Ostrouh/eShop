@@ -4,8 +4,6 @@ import org.ostroukh.model.entity.base.AbstractEntity;
 import org.ostroukh.model.entity.enums.ProductCategory;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.util.Set;
 
@@ -41,17 +39,17 @@ public class Product extends AbstractEntity {
     private int quantity;
 
     /**
-     * Set of orders that contains this product.
+     * Set of orderedProducts that contains this product.
      */
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "products")
-    private Set<Order> orders;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "product")
+    private Set<OrderedProduct> orderedProducts;
 
-    public Product(String name, ProductCategory category, int price, int quantity, Set<Order> orders) {
+    public Product(String name, ProductCategory category, int price, int quantity, Set<OrderedProduct> orderedProducts) {
         this.name = name;
         this.category = category;
         this.price = price;
         this.quantity = quantity;
-        this.orders = orders;
+        this.orderedProducts = orderedProducts;
     }
 
     public Product() {

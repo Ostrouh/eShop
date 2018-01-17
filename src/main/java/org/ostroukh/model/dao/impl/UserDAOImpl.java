@@ -54,6 +54,16 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
+    public User getByLogin(String login) {
+        Query query = getSession().createQuery("from User where credential.login = :login");
+        query.setParameter("login", login);
+        User user = (User) query.uniqueResult();
+
+        LOGGER.info("Successfully loaded. User details: " + user);
+        return user;
+    }
+
+    @Override
     public List<User> getAll() {
         List<User> users = getSession().createQuery("from User").list();
 

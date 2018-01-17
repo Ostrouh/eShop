@@ -26,4 +26,11 @@ public interface UserDAO extends AbstractDAO<User, Integer> {
      */
     List<User> getBySurname(String surname);
 
+    /**
+     * Returns user by login
+     * @param login
+     * @return
+     */
+    User getByLogin(String login);
+
 }

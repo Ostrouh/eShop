@@ -3,7 +3,8 @@ package org.ostroukh.config;
 import org.springframework.lang.Nullable;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
+public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer{
+
     @Nullable
     @Override
     protected Class<?>[] getRootConfigClasses() {
@@ -15,6 +16,8 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
     protected Class<?>[] getServletConfigClasses() {
         return new Class[]{WebConfig.class};
     }
+
+
 
     @Override
     protected String[] getServletMappings() {

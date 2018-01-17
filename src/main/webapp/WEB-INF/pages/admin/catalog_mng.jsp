@@ -1,39 +1,35 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-<%@ taglib prefix="from" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ page session="false" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
-    <title>EShop</title>
+    <title>Catalog management</title>
     <style>
-        <%@include file="/css/div-style.css"%>
+        <%@include file="/css/eShop_stylesheet.css"%>
     </style>
-    <meta name="keywords" content="" />
-    <meta name="description" content="" />
-
 <body>
 
 <div class="wrapper">
 
     <header class="header">
-        <strong>Header:</strong>
-    </header><!-- .header-->
+        <strong>You are logged in as <sec:authentication property="principal.username"/></strong>
+    </header>
 
     <div class="middle">
 
         <div class="container">
             <main class="content">
-                <br/>
-                <br/>
 
-                <h1>Product List</h1>
-                <br>
-                <br>
                 <c:if test="${!empty listProducts}">
+                    <br/>
+                    <br/>
+
+                    <h1>Product List</h1>
+                    <br>
+                    <br>
                     <table class="tg">
                         <tr>
                             <th width="80">ID</th>
@@ -51,8 +47,8 @@
                                 <td>${product.category}</td>
                                 <td>${product.quantity}</td>
                                 <td>${product.price/100}</td>
-                                <td><a href="<c:url value='/editProduct/${product.id}'/>">Edit</a></td>
-                                <td><a href="<c:url value='/deleteProduct/${product.id}'/>">Delete</a></td>
+                                <td><a href="<c:url value='editProduct/${product.id}'/>">Edit</a></td>
+                                <td><a href="<c:url value='deleteProduct/${product.id}'/>">Delete</a></td>
                             </tr>
                         </c:forEach>
                     </table>
@@ -62,7 +58,7 @@
                 <br>
                 <br>
 
-                <c:url var="addAction" value="/catalog/add"/>
+                <c:url var="addAction" value="/admin/catalog/add"/>
 
                 <form:form action="${addAction}" modelAttribute="product">
                     <table>
@@ -146,9 +142,13 @@
 
         <aside class="left-sidebar">
             <ul class="main-menu">
-                <li class="active"><a href="<c:url value="/catalog"/>">Catalog</a></li>
+                <li class="active"><a href="<c:url value="/admin/catalog"/>">Catalog</a></li>
 
-                <li><a href="<c:url value="/users"/>">Users</a></li>
+                <li><a href="<c:url value="/admin/users"/>">Users</a></li>
+
+                <li><a href="<c:url value="/admin/orders"/>">Orders</a></li>
+
+                <li><a href="<c:url value="/logout"/>">Logout</a></li>
             </ul>
         </aside><!-- .left-sidebar -->
 

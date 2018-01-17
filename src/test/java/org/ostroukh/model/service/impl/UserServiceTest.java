@@ -60,6 +60,13 @@ public class UserServiceTest {
 //    }
 
     @Test
+    public void testGetUserByLogin(){
+        User foundUser = userService.getUserByLogin("login");
+
+        assertEquals(user.getName(), foundUser.getName());
+    }
+
+    @Test
     public void testGetUserByIdNotFound(){
         Optional<User> foundUser = userService.getUserById(Integer.MAX_VALUE);
 

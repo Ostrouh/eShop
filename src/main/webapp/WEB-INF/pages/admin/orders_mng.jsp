@@ -3,15 +3,11 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
-    <title>EShop</title>
+    <title>Orders management</title>
     <style>
         <%@include file="/css/eShop_stylesheet.css"%>
     </style>
-    <meta name="keywords" content="" />
-    <meta name="description" content="" />
-
-<body>
+ <body>
 
 <div class="wrapper">
 
@@ -29,13 +25,13 @@
 
         <aside class="left-sidebar">
             <ul class="main-menu">
-                <li><a href="<c:url value="admin/catalog"/>">Catalog</a></li>
+                <li><a href="<c:url value="/admin/catalog"/>">Catalog</a></li>
 
-                <li><a href="<c:url value="/users"/>">Users</a></li>
+                <li><a href="<c:url value="/admin/users"/>">Users</a></li>
 
-                <li><a href="<c:url value="/registration"/>">Registration</a></li>
+                <li class="active"><a href="<c:url value="/admin/orders"/>">Orders</a></li>
 
-                <li><a href="<c:url value="/login"/>">Login</a></li>
+                <li><a href="<c:url value="/logout"/>">Login</a></li>
             </ul>
         </aside><!-- .left-sidebar -->
 
@@ -50,3 +46,4 @@
 
 </body>
 </html>
+

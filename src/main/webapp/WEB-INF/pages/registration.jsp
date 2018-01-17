@@ -11,7 +11,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
     <title>Registration</title>
     <style>
-        <%@include file="/css/div-style.css"%>
+        <%@include file="/css/eShop_stylesheet.css"%>
     </style>
     <meta name="keywords" content="" />
     <meta name="description" content="" />
@@ -32,7 +32,7 @@
 
                 <c:url var="addAction" value="/sign-up"/>
 
-                <form:form action="${addAction}" modelAttribute="user">
+                <form:form action="${addAction}" modelAttribute="userForm">
                     <table>
                         <tr>
                             <td>

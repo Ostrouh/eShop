@@ -1,41 +1,36 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-<%@ taglib prefix="from" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ page session="false" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <meta charset="utf-8"/>
-    <!--[if lt IE 9]>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
-    <title>EShop</title>
+    <title>Users management</title>
     <style>
-        <%@include file="/css/div-style.css"%>
+        <%@include file="/css/eShop_stylesheet.css"%>
     </style>
-    <meta name="keywords" content=""/>
-    <meta name="description" content=""/>
-
 <body>
 
 <div class="wrapper">
 
     <header class="header">
-        <strong>Header:</strong>
+        <strong>You are logged in as <sec:authentication property="principal.username"/></strong>
     </header><!-- .header-->
 
     <div class="middle">
 
         <div class="container">
             <main class="content">
-                <br/>
-                <br/>
-
-                <h1>List of users</h1>
-                <br>
-                <br>
 
                 <c:if test="${!empty listUsers}">
+                    <br/>
+                    <br/>
+
+                    <h1>List of users</h1>
+                    <br>
+                    <br>
                     <table class="tg">
                         <tr>
                             <th width="80">ID</th>
@@ -60,20 +55,20 @@
                                 <td>${user.credential.login}</td>
                                 <td>${user.credential.role.toString()}</td>
                                 <td>${user.credential.inBlackList ? "In black list" : "Not in black list"}</td>
-                                <td><a href="<c:url value='/editUser/${user.id}'/>">Edit</a></td>
+                                <td><a href="<c:url value='editUser/${user.id}'/>">Edit</a></td>
                             </tr>
                         </c:forEach>
                     </table>
                 </c:if>
-                <br>
-                <h1>Edit user</h1>
-                <br>
-                <br>
 
-                <c:url var="addAction" value="/users/update"/>
+                <c:url var="addAction" value="/admin/users/update"/>
 
                 <form:form action="${addAction}" modelAttribute="user">
                     <c:if test="${!empty user.name}">
+                        <br>
+                        <h1>Edit user</h1>
+                        <br>
+                        <br>
                         <table>
                             <tr>
                                 <td>
@@ -99,6 +94,9 @@
                                 <td>
                                     <form:input path="name"/>
                                 </td>
+                                <td>
+                                    <form:errors path="name" cssClass="error"/>
+                                </td>
                             </tr>
 
                             <tr>
@@ -109,6 +107,9 @@
                                 </td>
                                 <td>
                                     <form:input path="surname"/>
+                                </td>
+                                <td>
+                                    <form:errors path="surname" cssClass="error"/>
                                 </td>
                             </tr>
                             <tr>
@@ -201,10 +202,13 @@
 
         <aside class="left-sidebar">
             <ul class="main-menu">
-                <li><a href="<c:url value="/catalog"/>">Catalog</a></li>
+                <li><a href="<c:url value="/admin/catalog"/>">Catalog</a></li>
 
-                <li class="active"><a href="<c:url value="/users"/>">Users</a></li>
+                <li class="active"><a href="<c:url value="/admin/users"/>">Users</a></li>
 
+                <li><a href="<c:url value="/admin/orders"/>">Orders</a></li>
+
+                <li><a href="<c:url value="/logout"/>">Logout</a></li>
             </ul>
         </aside><!-- .left-sidebar -->
 

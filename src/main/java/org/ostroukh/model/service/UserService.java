@@ -17,6 +17,8 @@ public interface UserService {
 
     Optional<User> getUserById(Integer id);
 
+    User getUserByLogin(String login);
+
     void deleteUser(User user);
 
 }

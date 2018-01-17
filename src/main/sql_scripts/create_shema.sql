@@ -3,11 +3,63 @@ drop table if exists ORDERED_PRODUCT;
 drop table if exists ORDERS;
 drop table if exists PRODUCT;
 drop table if exists USER;
-create table CREDENTIAL (id integer not null auto_increment, CREATED_AT datetime not null, MODIFIED_AT datetime, EMAIL varchar(64), IS_IN_BLACK_LIST bit not null, LOGIN varchar(255) not null, PASSWORD varchar(255) not null, ROLE varchar(255) not null, primary key (id)) engine=MyISAM;
-create table ORDERED_PRODUCT (id integer not null auto_increment, CREATED_AT datetime not null, MODIFIED_AT datetime, QUANTITY integer, ORDER_ID integer not null, PRODUCT_ID integer not null, primary key (id)) engine=MyISAM;
-create table ORDERS (id integer not null auto_increment, CREATED_AT datetime not null, MODIFIED_AT datetime, STATUS varchar(255) not null, TOTAL_COST integer, USER_ID integer, primary key (id)) engine=MyISAM;
-create table PRODUCT (id integer not null auto_increment, CREATED_AT datetime not null, MODIFIED_AT datetime, CATEGORY varchar(255) not null, NAME varchar(255) not null, PRICE integer not null, QUANTITY integer not null, primary key (id)) engine=MyISAM;
-create table USER (id integer not null auto_increment, CREATED_AT datetime not null, MODIFIED_AT datetime, ADDRESS varchar(255) not null, DISCOUNT integer not null, NAME varchar(255) not null, PHONE_NUMBER varchar(255) not null, SURNAME varchar(255) not null, CREDENTIAL_ID integer not null, primary key (id)) engine=MyISAM;
+
+create table CREDENTIAL (
+  id integer not null auto_increment,
+  CREATED_AT datetime not null,
+  MODIFIED_AT datetime,
+  EMAIL varchar(64),
+  IS_IN_BLACK_LIST bit not null,
+  LOGIN varchar(255) not null,
+  PASSWORD varchar(255) not null,
+  ROLE varchar(255) not null,
+  primary key (id)
+) engine=MyISAM;
+
+create table ORDERED_PRODUCT (
+  id integer not null auto_increment,
+  CREATED_AT datetime not null,
+  MODIFIED_AT datetime,
+  QUANTITY integer,
+  ORDER_ID integer not null,
+  PRODUCT_ID integer not null,
+  primary key (id)
+) engine=MyISAM;
+
+create table ORDERS (
+  id integer not null auto_increment,
+  CREATED_AT datetime not null,
+  MODIFIED_AT datetime,
+  STATUS varchar(255) not null,
+  TOTAL_COST integer,
+  USER_ID integer,
+  primary key (id)
+) engine=MyISAM;
+
+create table PRODUCT (
+  id integer not null auto_increment,
+  CREATED_AT datetime not null,
+  MODIFIED_AT datetime,
+  CATEGORY varchar(255) not null,
+  NAME varchar(255) not null,
+  PRICE integer not null,
+  QUANTITY integer not null,
+  primary key (id)
+) engine=MyISAM;
+
+create table USER (
+  id integer not null auto_increment,
+  CREATED_AT datetime not null,
+  MODIFIED_AT datetime,
+  ADDRESS varchar(255) not null,
+  DISCOUNT integer not null,
+  NAME varchar(255) not null,
+  PHONE_NUMBER varchar(255) not null,
+  SURNAME varchar(255) not null,
+  CREDENTIAL_ID integer not null,
+  primary key (id)
+) engine=MyISAM;
+
 alter table CREDENTIAL add constraint UK_lb18ba67jvf9gp3cxn3u8re2j unique (EMAIL);
 alter table CREDENTIAL add constraint UK_m6x809xwq4ws9yvd1dtamqpr2 unique (LOGIN);
 alter table CREDENTIAL add constraint UK_eyql4cryx211o8jneu5ftgbew unique (PASSWORD);

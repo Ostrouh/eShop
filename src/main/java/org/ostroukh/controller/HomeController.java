@@ -11,11 +11,6 @@ public class HomeController {
         return "/index";
     }
 
-    @RequestMapping("/login")
-    public String getLogin(){
-        return "login";
-    }
-
     @RequestMapping("/registration")
     public String getRegistration(){
         return "registration";

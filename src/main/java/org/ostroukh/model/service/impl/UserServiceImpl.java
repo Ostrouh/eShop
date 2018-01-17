@@ -42,6 +42,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User getUserByLogin(String login) {
+        return dao.getByLogin(login);
+    }
+
+    @Override
     public void deleteUser(User user) {
         dao.delete(user);
     }

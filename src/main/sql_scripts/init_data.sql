@@ -1,7 +1,7 @@
 insert into CREDENTIAL
   (CREATED_AT, MODIFIED_AT, EMAIL, IS_IN_BLACK_LIST, LOGIN, PASSWORD, ROLE)
 values
-  (timestamp(now()), timestamp(now()),'ivanov@ivanov.com', 0, 'ivanov', 'ivanov', 'ADMIN');
+  (timestamp(now()), timestamp(now()),'ivanov@ivanov.com', 0, 'ivanov', 'ivanov', 'ROLE_ADMIN');
 
 insert into USER
   (CREATED_AT, MODIFIED_AT, ADDRESS, CREDENTIAL_ID, DISCOUNT, NAME, SURNAME, PHONE_NUMBER)
@@ -11,7 +11,7 @@ values
 insert into CREDENTIAL
   (CREATED_AT, MODIFIED_AT, EMAIL, IS_IN_BLACK_LIST, LOGIN, PASSWORD, ROLE)
 values
-  (timestamp(now()), timestamp(now()), 'petrov@petrov.com', 0, 'petrov', 'petrov', 'CUSTOMER');
+  (timestamp(now()), timestamp(now()), 'petrov@petrov.com', 0, 'petrov', 'petrov', 'ROLE_CUSTOMER');
 
 insert into USER
   (CREATED_AT, MODIFIED_AT, ADDRESS, CREDENTIAL_ID, DISCOUNT, NAME, SURNAME, PHONE_NUMBER)
@@ -21,7 +21,7 @@ values
 insert into CREDENTIAL
   (CREATED_AT, MODIFIED_AT, EMAIL, IS_IN_BLACK_LIST, LOGIN, PASSWORD, ROLE)
 values
-  (timestamp(now()), timestamp(now()), 'sidorov@sidorov.com', 0, 'sidorov', 'sidorov', 'CUSTOMER');
+  (timestamp(now()), timestamp(now()), 'sidorov@sidorov.com', 0, 'sidorov', 'sidorov', 'ROLE_CUSTOMER');
 
 insert into USER
   (CREATED_AT, MODIFIED_AT, ADDRESS, CREDENTIAL_ID, DISCOUNT, NAME, SURNAME, PHONE_NUMBER)

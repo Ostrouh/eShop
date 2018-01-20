@@ -26,9 +26,11 @@
 
         <aside class="left-sidebar">
             <ul class="main-menu">
-                <li><a href="<c:url value="c/catalog"/>">Catalog</a></li>
+                <li><a href="<c:url value="/customer/catalog"/>">Catalog</a></li>
 
-                <li><a href="<c:url value="/users"/>">Users</a></li>
+                <li><a href="<c:url value="/customer/orders"/>">My orders</a></li>
+
+                <li><a href="<c:url value="/customer/cabinet"/>">My cabinet</a></li>
 
                 <li><a href="<c:url value="/logout"/>">Logout</a></li>
             </ul>

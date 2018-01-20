@@ -26,7 +26,7 @@ public class EntityCreator {
         credential.setPassword("password");
         credential.setEmail("gordon@blackmesa.com");
         credential.setInBlackList(false);
-        credential.setRole(UserRole.ADMIN);
+        credential.setRole(UserRole.ROLE_ADMIN);
 
         user.setCredential(credential);
 

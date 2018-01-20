@@ -4,6 +4,7 @@ import org.ostroukh.model.entity.Credential;
 import org.ostroukh.model.entity.Product;
 import org.ostroukh.model.entity.User;
 import org.ostroukh.model.service.CredentialService;
+import org.ostroukh.model.service.OrderService;
 import org.ostroukh.model.service.ProductService;
 import org.ostroukh.model.service.UserService;
 import org.slf4j.Logger;
@@ -32,6 +33,9 @@ public class AdminController {
 
     @Autowired
     CredentialService credentialService;
+
+    @Autowired
+    OrderService orderService;
 
     @RequestMapping("/catalog")
     public String listProducts(Model model){

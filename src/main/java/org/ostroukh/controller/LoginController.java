@@ -28,10 +28,10 @@ public class LoginController {
             model.addAttribute("user", user.getUsername());
 
             switch (user.getAuthorities().toArray()[0].toString()) {
-                case "ADMIN":
+                case "ROLE_ADMIN":
                     page = "admin/admin";
                     break;
-                case "CUSTOMER":
+                case "ROLE_CUSTOMER":
                     page = "customer/customer";
                     break;
                 default:
@@ -45,8 +45,6 @@ public class LoginController {
 
     private UserDetails getPrincipal(){
         Object userDetails = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-        System.out.println(userDetails.toString());
 
         if (userDetails instanceof UserDetails){
             return (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();

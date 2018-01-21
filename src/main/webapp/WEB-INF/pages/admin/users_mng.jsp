@@ -16,8 +16,10 @@
 <div class="wrapper">
 
     <header class="header">
-        <strong>You are logged in as <sec:authentication property="principal.username"/></strong>
-    </header><!-- .header-->
+        <strong>You are logged in as <sec:authentication property="principal.username"/>
+            <a href="<c:url value="/logout"/>">Logout</a>
+        </strong>
+    </header>
 
     <div class="middle">
 
@@ -215,11 +217,6 @@
     </div><!-- .middle-->
 
 </div><!-- .wrapper -->
-
-<footer class="footer">
-    <br>
-    <b>Project for EPAM java training</b>
-</footer><!-- .footer -->
 
 </body>
 </html>

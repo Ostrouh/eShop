@@ -38,11 +38,6 @@
 
 </div><!-- .wrapper -->
 
-<footer class="footer">
-    <br>
-    <b>Project for EPAM java training</b>
-</footer><!-- .footer -->
-
 </body>
 </html>
 

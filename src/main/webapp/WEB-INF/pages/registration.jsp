@@ -7,32 +7,29 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <!--[if lt IE 9]>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
+
     <title>Registration</title>
     <style>
         <%@include file="/css/eShop_stylesheet.css"%>
     </style>
-    <meta name="keywords" content="" />
-    <meta name="description" content="" />
-
 <body>
 
 <div class="wrapper">
 
     <header class="header">
-        <strong>Header:</strong>
+        <br>
+        <strong>Fill in all the blanks, please</strong>
     </header><!-- .header-->
 
     <div class="middle">
 
         <div class="container">
             <main class="content">
-                <h1>Fill in the blanks</h1>
 
-                <c:url var="addAction" value="/sign-up"/>
 
-                <form:form action="${addAction}" modelAttribute="userForm">
+                <c:url var="addAction" value="/registration"/>
+
+                <form:form action="${addAction}" modelAttribute="user">
                     <table>
                         <tr>
                             <td>
@@ -42,6 +39,9 @@
                             </td>
                             <td>
                                 <form:input path="name"/>
+                            </td>
+                            <td>
+                                <form:errors path="name" cssClass="error"/>
                             </td>
                         </tr>
 
@@ -53,6 +53,9 @@
                             </td>
                             <td>
                                 <form:input path="surname"/>
+                            </td>
+                            <td>
+                                <form:errors path="surname" cssClass="error"/>
                             </td>
                         </tr>
                         <tr>
@@ -73,6 +76,45 @@
                             </td>
                             <td>
                                 <form:input path="phoneNumber"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <form:label path="credential.email">
+                                    <spring:message text="Email"/>
+                                </form:label>
+                            </td>
+                            <td>
+                                <form:input path="credential.email"/>
+                            </td>
+                            <td>
+                                <form:errors path="credential.email" cssClass="error"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <form:label path="credential.login">
+                                    <spring:message text="Login"/>
+                                </form:label>
+                            </td>
+                            <td>
+                                <form:input path="credential.login"/>
+                            </td>
+                            <td>
+                                <form:errors path="credential.login" cssClass="error"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <form:label path="credential.password">
+                                    <spring:message text="Password"/>
+                                </form:label>
+                            </td>
+                            <td>
+                                <form:input path="credential.password"/>
+                            </td>
+                            <td>
+                                <form:errors path="credential.password" cssClass="error"/>
                             </td>
                         </tr>
 
@@ -98,11 +140,6 @@
     </div><!-- .middle-->
 
 </div><!-- .wrapper -->
-
-<footer class="footer">
-    <br>
-    <b>Project for EPAM java training</b>
-</footer><!-- .footer -->
 
 </body>
 </html>

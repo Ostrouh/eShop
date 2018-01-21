@@ -3,8 +3,6 @@ package org.ostroukh.model.entity;
 import org.ostroukh.model.entity.base.AbstractEntity;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.util.Set;
 
@@ -24,16 +22,16 @@ public class User extends AbstractEntity {
     @Column(name = "SURNAME", nullable = false)
     private String surname;
 
-    @Column(name = "ADDRESS", nullable = false)
+    @Column(name = "ADDRESS")
     private String address;
 
-    @Column(name = "PHONE_NUMBER", nullable = false)
+    @Column(name = "PHONE_NUMBER")
     private String phoneNumber;
 
     /**
      * Discount that provided to specific user
      */
-    @Column(name = "DISCOUNT", nullable = false)
+    @Column(name = "DISCOUNT")
     private int discount;
 
     /**

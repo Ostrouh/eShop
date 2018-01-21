@@ -8,8 +8,6 @@
     <style>
         <%@include file="/css/eShop_stylesheet.css"%>
     </style>
-    <meta name="keywords" content="" />
-    <meta name="description" content="" />
 
 <body>
 
@@ -29,9 +27,6 @@
 
         <aside class="left-sidebar">
             <ul class="main-menu">
-                <li><a href="<c:url value="admin/catalog"/>">Catalog</a></li>
-
-                <li><a href="<c:url value="/users"/>">Users</a></li>
 
                 <li><a href="<c:url value="/registration"/>">Registration</a></li>
 
@@ -42,11 +37,6 @@
     </div><!-- .middle-->
 
 </div><!-- .wrapper -->
-
-<footer class="footer">
-    <br>
-    <b>Project for EPAM java training</b>
-</footer><!-- .footer -->
 
 </body>
 </html>

@@ -13,7 +13,6 @@
 <div class="wrapper">
 
     <header class="header">
-        <strong>Header:</strong>
     </header><!-- .header-->
 
     <div class="middle">
@@ -39,11 +38,6 @@
     </div><!-- .middle-->
 
 </div><!-- .wrapper -->
-
-<footer class="footer">
-    <br>
-    <b>Project for EPAM java training</b>
-</footer><!-- .footer -->
 
 </body>
 </html>

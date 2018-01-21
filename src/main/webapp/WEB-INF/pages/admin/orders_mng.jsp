@@ -1,5 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
 <html>
 <head>
     <meta charset="utf-8" />
@@ -12,8 +14,10 @@
 <div class="wrapper">
 
     <header class="header">
-        <strong>Header:</strong>
-    </header><!-- .header-->
+        <strong>You are logged in as <sec:authentication property="principal.username"/>
+            <a href="<c:url value="/logout"/>">Logout</a>
+        </strong>
+    </header>
 
     <div class="middle">
 
@@ -38,11 +42,6 @@
     </div><!-- .middle-->
 
 </div><!-- .wrapper -->
-
-<footer class="footer">
-    <br>
-    <b>Project for EPAM java training</b>
-</footer><!-- .footer -->
 
 </body>
 </html>

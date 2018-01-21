@@ -1,9 +1,3 @@
-@RequestMapping("/catalog")
-public String listProducts(Model model){
-model.addAttribute("product", new Product());
-model.addAttribute("listProducts", productService.getAllProducts());
-
-return "admin/catalog_mng";
 }<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
@@ -72,11 +66,6 @@ return "admin/catalog_mng";
     </div><!-- .middle-->
 
 </div><!-- .wrapper -->
-
-<footer class="footer">
-    <br>
-    <b>Project for EPAM java training</b>
-</footer><!-- .footer -->
 
 </body>
 </html>

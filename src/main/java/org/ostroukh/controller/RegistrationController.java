@@ -8,7 +8,12 @@ import org.ostroukh.model.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -29,6 +34,9 @@ public class RegistrationController {
     @Autowired
     ShaPasswordEncoder shaPasswordEncoder;
 
+    @Autowired
+    AuthenticationManager authenticationManager;
+
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String getRegistration(Model model){
         model.addAttribute("user", new User());
@@ -45,13 +53,17 @@ public class RegistrationController {
         Credential credential = user.getCredential();
         credential.setRole(UserRole.ROLE_CUSTOMER);
 
-        String password =  shaPasswordEncoder.encodePassword(credential.getPassword(), null);
-        credential.setPassword(password);
+        String password = credential.getPassword();
+        String encodedPassword = shaPasswordEncoder.encodePassword(password, null);
+
+        credential.setPassword(encodedPassword);
 
         credentialService.saveCredential(credential);
         userService.saveUser(user);
 
-        //securityService.autoLogin(userForm.getUsername(), userForm.getConfirmPassword());
+
+
+        autoLogin(credential.getLogin(), password);
 
         return "redirect:/registration_success";
     }
@@ -61,5 +73,19 @@ public class RegistrationController {
         return "registration_success";
     }
 
+    /**
+     * Adding just registered user to Security Context
+     * @param login
+     * @param password
+     */
+    private void autoLogin(String login, String password){
+        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(login, password);
+
+        try {
+            Authentication auth = authenticationManager.authenticate(token);
+            SecurityContextHolder.getContext().setAuthentication(auth);
+        } catch (BadCredentialsException e){
+        }
+    }
 
 }

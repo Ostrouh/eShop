@@ -17,7 +17,6 @@
 <div class="wrapper">
 
     <header class="header">
-        <br>
         <strong>Fill in all the blanks, please</strong>
     </header><!-- .header-->
 
@@ -30,7 +29,7 @@
                 <c:url var="addAction" value="/registration"/>
 
                 <form:form action="${addAction}" modelAttribute="user">
-                    <table>
+                    <table padding="50px">
                         <tr>
                             <td>
                                 <form:label path="name">
@@ -119,7 +118,7 @@
                         </tr>
 
                         <tr>
-                            <td colspan="2">
+                            <td colspan="2" align="center">
                                     <input type="submit"
                                            value="<spring:message text="sign-up"/>"/>
                             </td>

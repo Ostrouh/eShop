@@ -9,6 +9,8 @@
     <title>Catalog management</title>
     <style>
         <%@include file="/css/eShop_stylesheet.css"%>
+        <%@include file="/css/bootstrap.min.css"%>
+
     </style>
 <body>
 
@@ -32,7 +34,8 @@
                     <h1>Product List</h1>
                     <br>
                     <br>
-                    <table class="tg">
+                    <table class="table table-bordered table-hover">
+                        <thead class="thead-inverse">
                         <tr>
                             <th width="80">ID</th>
                             <th width="120">Name</th>
@@ -42,6 +45,8 @@
                             <th width="60">Edit</th>
                             <th width="60">Delete</th>
                         </tr>
+                        </thead>
+                        <tbody>
                         <c:forEach items="${listProducts}" var="product">
                             <tr>
                                 <td>${product.id}</td>
@@ -53,6 +58,7 @@
                                 <td><a href="<c:url value='deleteProduct/${product.id}'/>">Delete</a></td>
                             </tr>
                         </c:forEach>
+                        </tbody>
                     </table>
                 </c:if>
                 <br>
@@ -63,7 +69,7 @@
                 <c:url var="addAction" value="/admin/catalog/add"/>
 
                 <form:form action="${addAction}" modelAttribute="product">
-                    <table>
+                    <table cellpadding="10px">
                         <c:if test="${!empty product.name}">
                             <tr>
                                 <td>
@@ -127,12 +133,10 @@
                         <tr>
                             <td colspan="2">
                                 <c:if test="${!empty product.name}">
-                                    <input type="submit"
-                                           value="<spring:message text="Edit product"/>"/>
+                                    <button class="btn btn-lg btn-primary btn-block" type="submit">Edit product</button>
                                 </c:if>
                                 <c:if test="${empty product.name}">
-                                    <input type="submit"
-                                           value="<spring:message text="Add product"/>"/>
+                                    <button class="btn btn-lg btn-primary btn-block" type="submit">Add product</button>
                                 </c:if>
 
                             </td>

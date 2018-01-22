@@ -38,7 +38,6 @@
                             <th width="120">Quantity</th>
                             <th width="120">Price</th>
                             <th width="60">Edit</th>
-                            <th width="60">Delete</th>
                         </tr>
                         <c:forEach items="${listProducts}" var="product">
                             <tr>
@@ -60,9 +59,9 @@
             <ul class="main-menu">
                 <li class="active"><a href="<c:url value="/customer/catalog"/>">Catalog</a></li>
 
-                <li><a href="<c:url value="/admin/users"/>">Users</a></li>
+                <li><a href="<c:url value="/customer/orders"/>">My orders</a></li>
 
-                <li><a href="<c:url value="/admin/orders"/>">Orders</a></li>
+                <li><a href="<c:url value="/customer/cabinet"/>">My cabinet</a></li>
 
                 <li><a href="<c:url value="/logout"/>">Logout</a></li>
             </ul>

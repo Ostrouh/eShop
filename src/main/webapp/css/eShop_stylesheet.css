@@ -29,6 +29,7 @@ body {
 /* Header
 -----------------------------------------------------------------------------*/
 .header {
+    padding-bottom: 20px;
     font-size: large;
     text-align: center;
     height: 10vh;

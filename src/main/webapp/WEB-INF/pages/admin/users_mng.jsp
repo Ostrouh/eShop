@@ -71,7 +71,7 @@
                         <h1>Edit user</h1>
                         <br>
                         <br>
-                        <table>
+                        <table cellpadding="10px">
                             <tr>
                                 <td>
                                     <form:label path="id">

@@ -23,7 +23,33 @@
 
         <div class="container">
             <main class="content">
-                <strong>Content:</strong>
+                <c:if test="${true}">
+                    <br/>
+                    <br/>
+
+                    <h1>List of orders</h1>
+                    <br>
+                    <br>
+                    <table class="tg">
+                        <tr>
+                            <th width="80">ID</th>
+                            <th width="120">Date</th>
+                            <th width="120">Status</th>
+                            <th width="120">Cost</th>
+                            <th width="120">Details</th>
+                        </tr>
+                        <c:forEach items="${listOrders}" var="order">
+                            <tr>
+                                <td>${order.id}</td>
+                                <td>${order.createdAt}</td>
+                                <td>${order.status}</td>
+                                <td>${order.totalCost}</td>
+                                <td><a href="<c:url value='orderDetails/${order.id}'/>">Details</a></td>
+
+                            </tr>
+                        </c:forEach>
+                    </table>
+                </c:if>
             </main><!-- .content -->
         </div><!-- .container-->
 

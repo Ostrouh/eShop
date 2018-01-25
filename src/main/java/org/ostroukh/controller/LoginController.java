@@ -4,6 +4,7 @@ import org.ostroukh.model.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class LoginController {
     @Autowired
     UserService userService;
+
+    @Autowired
+    UserDetailsService userDetailsService;
 
     @RequestMapping("/login")
     public String getLogin(){
@@ -52,7 +56,7 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/access_denied")
-    public String accessDeniedPage(ModelMap model) {
+    public String accessDeniedPage() {
         return "access_denied";
     }
 }

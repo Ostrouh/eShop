@@ -1,7 +1,6 @@
 package org.ostroukh.controller;
 
 import org.ostroukh.model.entity.Order;
-import org.ostroukh.model.entity.Product;
 import org.ostroukh.model.entity.User;
 import org.ostroukh.model.service.CredentialService;
 import org.ostroukh.model.service.OrderService;
@@ -32,19 +31,19 @@ public class CustomerController {
     @Autowired
     OrderService orderService;
 
-    @RequestMapping("/catalog")
-    public String getCatalog(Model model){
-        model.addAttribute("product", new Product());
-        model.addAttribute("listProducts", productService.getAllProducts());
-
-        return "customer/catalog";
-    }
+//    @RequestMapping("/catalog")
+//    public String getCatalog(Model model){
+//        model.addAttribute("product", new Product());
+//        model.addAttribute("listProducts", productService.getAllProducts());
+//
+//        return "customer/catalog";
+//    }
 
     @RequestMapping("/orders")
     public String listProducts(Model model){
         String login = SecurityContextHolder.getContext().getAuthentication().getName();
         User user = userService.getUserByLogin(login);
-        System.out.println(user.getName());
+
 
         model.addAttribute("order", new Order());
         model.addAttribute("listOrders", orderService.getOrdersByUser(user));

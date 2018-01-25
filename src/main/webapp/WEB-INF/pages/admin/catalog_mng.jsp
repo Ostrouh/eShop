@@ -9,8 +9,6 @@
     <title>Catalog management</title>
     <style>
         <%@include file="/css/eShop_stylesheet.css"%>
-        <%@include file="/css/bootstrap.min.css"%>
-
     </style>
 <body>
 
@@ -34,8 +32,8 @@
                     <h1>Product List</h1>
                     <br>
                     <br>
-                    <table class="table table-bordered table-hover">
-                        <thead class="thead-inverse">
+                    <table class="tg">
+                        <thead>
                         <tr>
                             <th width="80">ID</th>
                             <th width="120">Name</th>
@@ -69,7 +67,7 @@
                 <c:url var="addAction" value="/admin/catalog/add"/>
 
                 <form:form action="${addAction}" modelAttribute="product">
-                    <table cellpadding="10px">
+                    <table>
                         <c:if test="${!empty product.name}">
                             <tr>
                                 <td>
@@ -131,12 +129,12 @@
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="2">
+                            <td colspan="2" align="center" height="50px">
                                 <c:if test="${!empty product.name}">
-                                    <button class="btn btn-lg btn-primary btn-block" type="submit">Edit product</button>
+                                    <button class="button" type="submit">Edit product</button>
                                 </c:if>
                                 <c:if test="${empty product.name}">
-                                    <button class="btn btn-lg btn-primary btn-block" type="submit">Add product</button>
+                                    <button type="submit">Add product</button>
                                 </c:if>
 
                             </td>

@@ -15,7 +15,9 @@
 <div class="wrapper">
 
     <header class="header">
-        <strong>You are logged in as <sec:authentication property="principal.username"/></strong>
+        <strong>You are logged in as <sec:authentication property="principal.username"/>
+            <a href="<c:url value="/logout"/>">Logout</a>
+        </strong>
     </header>
 
     <div class="middle">
@@ -35,7 +37,6 @@
 
                 <li class="active"><a href="<c:url value="/customer/cabinet"/>">My cabinet</a></li>
 
-                <li><a href="<c:url value="/logout"/>">Logout</a></li>
             </ul>
         </aside><!-- .left-sidebar -->
 

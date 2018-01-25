@@ -210,7 +210,6 @@
 
                 <li><a href="<c:url value="/admin/orders"/>">Orders</a></li>
 
-                <li><a href="<c:url value="/logout"/>">Logout</a></li>
             </ul>
         </aside><!-- .left-sidebar -->
 

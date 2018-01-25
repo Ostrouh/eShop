@@ -22,7 +22,14 @@ public class Export {
                 .applySetting("hibernate.dialect", dialect.getName())
                 .build()
         );
-        Set<Class<?>> entityClasses = Sets.newHashSet(User.class, Credential.class, Order.class, Product.class, OrderedProduct.class);
+        Set<Class<?>> entityClasses = Sets.newHashSet(
+                User.class,
+                Credential.class,
+                Order.class,
+                Product.class,
+                OrderedProduct.class,
+                Cart.class,
+                CartItem.class);
         entityClasses.forEach(metadata::addAnnotatedClass);
 
         SchemaExport schema = new SchemaExport();

@@ -4,6 +4,7 @@ import org.ostroukh.model.entity.base.AbstractEntity;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -41,11 +42,14 @@ public class User extends AbstractEntity {
     @JoinColumn(name="CREDENTIAL_ID", unique = true, nullable = false, updatable = false)
     private Credential credential;
 
+
+    @OneToOne(optional = false, mappedBy = "user")
+    private Cart cart;
     /**
      * Set of orders that specific user placed
      */
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "user", orphanRemoval = true)
-    private Set<Order> orders;
+    private Set<Order> orders = new HashSet<>();
 
     public User(String name, String surname, String address, String phoneNumber, int discount) {
         this.name = name;
@@ -112,6 +116,14 @@ public class User extends AbstractEntity {
 
     public void setOrders(Set<Order> orders) {
         this.orders = orders;
+    }
+
+    public Cart getCart() {
+        return cart;
+    }
+
+    public void setCart(Cart cart) {
+        this.cart = cart;
     }
 
     @Override

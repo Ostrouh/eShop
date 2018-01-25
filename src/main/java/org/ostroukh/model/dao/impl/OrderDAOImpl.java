@@ -29,6 +29,7 @@ public class OrderDAOImpl implements OrderDAO {
     protected Session getSession() {
         return sessionFactory.getCurrentSession();
     }
+
     @Override
     public List<Order> getByUser(User user) {
         Query query = getSession().createQuery("from Order where user = :user");

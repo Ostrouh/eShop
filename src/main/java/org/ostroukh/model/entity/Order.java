@@ -6,6 +6,7 @@ import org.ostroukh.model.entity.base.AbstractEntity;
 import org.ostroukh.model.entity.enums.OrderStatus;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -32,7 +33,7 @@ public class Order extends AbstractEntity {
      * Set of products in specific order
      */
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "order")
-    private Set<OrderedProduct> orderedProducts;
+    private Set<OrderedProduct> orderedProducts = new HashSet<>();
 
     /**
      * Status of order

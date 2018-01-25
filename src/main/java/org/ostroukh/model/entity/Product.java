@@ -5,6 +5,7 @@ import org.ostroukh.model.entity.enums.ProductCategory;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -42,7 +43,7 @@ public class Product extends AbstractEntity {
      * Set of orderedProducts that contains this product.
      */
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "product")
-    private Set<OrderedProduct> orderedProducts;
+    private Set<OrderedProduct> orderedProducts = new HashSet<>();
 
     public Product(String name, ProductCategory category, int price, int quantity, Set<OrderedProduct> orderedProducts) {
         this.name = name;

@@ -103,11 +103,7 @@ body {
     border-color: #ccc;
 }
 
-.tg tr{
-
-}
-
-.tg tr:hover {
+.tg tbody tr:hover {
     background: lightgrey;
 }
 
@@ -175,4 +171,55 @@ body {
 .main-menu .active a {
     color: white;
     background: #0088cc;
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * Push Button                                                                 *
+ *                                                                             *
+ ******************************************************************************/
+
+.button {
+    text-fill: white;
+    background-color: linear-gradient(#61a2b1, #2A5058);
+    background-radius: 25;
+}
+
+.button:hover{
+    background-color: linear-gradient(#2A5058, #61a2b1);
+    background-radius: 20;
+}
+
+.button:pressed, .button:default:hover:pressed
+{
+    background-color: linear-gradient(#61a2b1, #2A5058);
+    text-fill: #1d1d1d;
+    background-radius: 20;
+}
+
+.button:focused
+{
+    border-color: linear-gradient(#2A5058, #61a2b1);
+    border-width: 1, 1;
+    border-style: solid, segments(1, 1);
+    border-radius: 0, 0;
+    border-insets: 1 1 1 1, 0;
+    border-radius: 20;
+}
+
+.button:disabled, .button:default:disabled
+{
+    opacity: 0.4;
+    background-color: #1d1d1d;
+    text-fill: white;
+}
+
+.button:default
+{
+    background-color: #008287;
+    text-fill: #ffffff;
+}
+
+.button:default:hover{
+    background-color: #219297;
 }

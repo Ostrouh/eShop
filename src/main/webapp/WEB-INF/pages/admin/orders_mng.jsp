@@ -60,8 +60,6 @@
                 <li><a href="<c:url value="/admin/users"/>">Users</a></li>
 
                 <li class="active"><a href="<c:url value="/admin/orders"/>">Orders</a></li>
-
-                <li><a href="<c:url value="/logout"/>">Login</a></li>
             </ul>
         </aside><!-- .left-sidebar -->
 

@@ -1,19 +1,30 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Configuration status="INFO">
+<?xml version='1.0' encoding='UTF-8'?>
+<Configuration status='warn'>
+    <Properties>
+        <Property name='basePath'>C:/Temp</Property>
+    </Properties>
+
     <Appenders>
-        <File name="fileLog" fileName="eShop.log">
-            <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level - %msg%n" />
-        </File>
-        <Console name="STDOUT" target="SYSTEM_OUT">
-            <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level - %msg%n" />
+        <RollingFile name='fileLogger' fileName='${basePath}/eShop.log'
+                     filePattern='${basePath}/eShop-%d{yyyy-MM-dd}.log'>
+            <PatternLayout>
+                <pattern>[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval='1' modulate='true' />
+            </Policies>
+        </RollingFile>
+
+        <Console name='console' target='SYSTEM_OUT'>
+            <PatternLayout   pattern='[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n' />
         </Console>
     </Appenders>
     <Loggers>
-        <logger name="org.ostroukh" level="INFO">
-            <AppenderRef ref="fileLog" />
-        </logger>
-        <Root level="ERROR">
-            <AppenderRef ref="STDOUT" />
+        <Logger name='org.ostroukh' level='debug' additivity='true'>
+            <appender-ref ref='fileLogger' level='debug' />
+        </Logger>
+        <Root level='info' additivity='true'>
+            <appender-ref ref='console' />
         </Root>
     </Loggers>
 </Configuration>

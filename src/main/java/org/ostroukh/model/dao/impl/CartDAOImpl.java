@@ -2,7 +2,6 @@ package org.ostroukh.model.dao.impl;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.query.Query;
 import org.ostroukh.model.dao.CartDAO;
 import org.ostroukh.model.entity.Cart;
 import org.ostroukh.model.entity.User;
@@ -30,9 +29,11 @@ public class CartDAOImpl implements CartDAO {
 
     @Override
     public Cart getByUser(User user) {
-        Query query = getSession().createQuery("from Cart where user = :user");
-        query.setParameter("user", user);
-        Cart cart = (Cart) query.uniqueResult();
+//        Query query = getSession().createQuery("from Cart where user = :user");
+//        query.setParameter("user", user);
+//        Cart cart = (Cart) query.uniqueResult();
+
+        Cart cart = getById(user.getId());
 
         LOGGER.info("Successfully loaded. Cart details: " + cart);
         return cart;

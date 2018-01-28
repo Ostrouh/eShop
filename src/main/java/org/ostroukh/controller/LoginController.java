@@ -1,5 +1,7 @@
 package org.ostroukh.controller;
 
+import org.ostroukh.model.entity.Cart;
+import org.ostroukh.model.service.CartService;
 import org.ostroukh.model.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -7,8 +9,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
+@SessionAttributes({"cart"})
 @Controller
 public class LoginController {
     @Autowired
@@ -16,6 +21,14 @@ public class LoginController {
 
     @Autowired
     UserDetailsService userDetailsService;
+
+    @Autowired
+    CartService cartService;
+
+    @ModelAttribute("cart")
+    public Cart cartInit(){
+        return new Cart();
+    }
 
     @RequestMapping("/login")
     public String getLogin(){
@@ -30,6 +43,7 @@ public class LoginController {
 
         if (user != null) {
             model.addAttribute("user", user.getUsername());
+            model.addAttribute("cart", userService.getUserByLogin(user.getUsername()).getCart());
 
             switch (user.getAuthorities().toArray()[0].toString()) {
                 case "ROLE_ADMIN":

@@ -1,6 +1,7 @@
 package org.ostroukh.model.service.impl;
 
 import org.ostroukh.model.dao.CartItemDAO;
+import org.ostroukh.model.entity.Cart;
 import org.ostroukh.model.entity.CartItem;
 import org.ostroukh.model.service.CartItemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,4 +36,10 @@ public class CartItemServiceImpl implements CartItemService{
     public void deleteCartItem(CartItem cartItem) {
         dao.delete(cartItem);
     }
+
+    @Override
+    public List<CartItem> getCartItemsByCart(Cart cart) {
+        return dao.getByCart(cart);
+    }
+
 }

@@ -1,5 +1,7 @@
 package org.ostroukh.model.entity;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.ostroukh.model.entity.base.AbstractEntity;
 
 import javax.persistence.*;
@@ -10,15 +12,15 @@ public class CartItem extends AbstractEntity{
     /**
      * Product added by the customer in the specified order
      */
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)//CascadeType:ALL
     @JoinColumn(name = "PRODUCT_ID", nullable = false)
     private Product product;
 
     /**
      * Order that contains specified product
      */
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "CART_ID", nullable = false)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)//CascadeType:ALL
+    @JoinColumn(name = "CART_ID", nullable = false, referencedColumnName = "id")
     private Cart cart;
 
     /**
@@ -28,6 +30,12 @@ public class CartItem extends AbstractEntity{
     private int quantity;
 
     public CartItem() {
+    }
+
+    public CartItem(Product product, Cart cart, int quantity) {
+        this.product = product;
+        this.cart = cart;
+        this.quantity = quantity;
     }
 
     public Cart getCart() {
@@ -52,5 +60,40 @@ public class CartItem extends AbstractEntity{
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+
+        if (o == null || getClass() != o.getClass()) return false;
+
+        CartItem cartItem = (CartItem) o;
+
+        return new EqualsBuilder()
+                .appendSuper(super.equals(o))
+                .append(quantity, cartItem.quantity)
+                .append(product, cartItem.product)
+                .append(cart, cartItem.cart)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder(17, 37)
+                .appendSuper(super.hashCode())
+                .append(product)
+                .append(cart)
+                .append(quantity)
+                .toHashCode();
+    }
+
+    @Override
+    public String toString() {
+        return "CartItem{" +
+                "productID=" + product.getId() +
+                ", cartID=" + cart.getId() +
+                ", quantity=" + quantity +
+                '}';
     }
 }

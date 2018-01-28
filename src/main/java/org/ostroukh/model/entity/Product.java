@@ -5,7 +5,9 @@ import org.ostroukh.model.entity.enums.ProductCategory;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -45,6 +47,12 @@ public class Product extends AbstractEntity {
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "product")
     private Set<OrderedProduct> orderedProducts = new HashSet<>();
 
+    /**
+     * List of cartItems that contains this product.
+     */
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "product")
+    private List<CartItem> cartItems = new ArrayList<>();
+
     public Product(String name, ProductCategory category, int price, int quantity, Set<OrderedProduct> orderedProducts) {
         this.name = name;
         this.category = category;
@@ -54,6 +62,22 @@ public class Product extends AbstractEntity {
     }
 
     public Product() {
+    }
+
+    public Set<OrderedProduct> getOrderedProducts() {
+        return orderedProducts;
+    }
+
+    public void setOrderedProducts(Set<OrderedProduct> orderedProducts) {
+        this.orderedProducts = orderedProducts;
+    }
+
+    public List<CartItem> getCartItems() {
+        return cartItems;
+    }
+
+    public void setCartItems(List<CartItem> cartItems) {
+        this.cartItems = cartItems;
     }
 
     public String getName() {

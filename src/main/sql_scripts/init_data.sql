@@ -7,8 +7,8 @@ insert into USER
 values
     (timestamp(now()), timestamp(now()), 'address1', 1, 0, 'ivan', 'Ivanov', '+1 11 111 11 11');
 insert into CART
-  (CREATED_AT, MODIFIED_AT, USER_ID)
-values (timestamp(now()), timestamp(now()), 1);
+  (CREATED_AT, MODIFIED_AT, USER_ID, TOTAL_COST)
+values (timestamp(now()), timestamp(now()), 1, 0);
 
 insert into CREDENTIAL
   (CREATED_AT, MODIFIED_AT, EMAIL, IS_IN_BLACK_LIST, LOGIN, PASSWORD, ROLE)
@@ -19,8 +19,8 @@ insert into USER
 values
   (timestamp(now()), timestamp(now()), 'address2', 2, 0, 'petr', 'petrov', '+2 22 222 22 22');
 insert into CART
-  (CREATED_AT, MODIFIED_AT, USER_ID)
-values (timestamp(now()), timestamp(now()), 2);
+  (CREATED_AT, MODIFIED_AT, USER_ID, TOTAL_COST)
+values (timestamp(now()), timestamp(now()), 2, 0);
 
 insert into CREDENTIAL
   (CREATED_AT, MODIFIED_AT, EMAIL, IS_IN_BLACK_LIST, LOGIN, PASSWORD, ROLE)
@@ -31,8 +31,8 @@ insert into USER
 values
   (timestamp(now()), timestamp(now()), 'address3', 3, 0, 'sidor', 'sidorov', '+3 33 333 33 33');
 insert into CART
-  (CREATED_AT, MODIFIED_AT, USER_ID)
-values (timestamp(now()), timestamp(now()), 3);
+  (CREATED_AT, MODIFIED_AT, USER_ID, TOTAL_COST)
+values (timestamp(now()), timestamp(now()), 3, 0);
 
 insert into PRODUCT
   (CREATED_AT, MODIFIED_AT, CATEGORY, NAME, PRICE, QUANTITY)

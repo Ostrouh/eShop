@@ -2,7 +2,9 @@ package org.ostroukh.model.dao.impl;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.ostroukh.model.dao.CartItemDAO;
+import org.ostroukh.model.entity.Cart;
 import org.ostroukh.model.entity.CartItem;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -57,5 +59,17 @@ public class CartItemDAOImpl implements CartItemDAO {
         getSession().delete(entity);
 
         LOGGER.info("Successfully deleted. Cart item details: " + entity);
+    }
+
+    @Override
+    public List<CartItem> getByCart(Cart cart) {
+        Query query = getSession().createQuery("from CartItem where cart = :cart");
+        query.setParameter("cart", cart);
+        List<CartItem> items = query.list();
+
+        for(CartItem item: items){
+            LOGGER.info("Orders by user: " + item);
+        }
+        return items;
     }
 }

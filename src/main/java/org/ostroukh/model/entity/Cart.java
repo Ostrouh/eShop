@@ -5,8 +5,8 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.ostroukh.model.entity.base.AbstractEntity;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Entity that contains data of a specific order
@@ -16,12 +16,29 @@ import java.util.Set;
 @Entity
 public class Cart extends AbstractEntity{
 
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "USER_ID")
+    @OneToOne(optional = false, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "USER_ID", unique = true, nullable = false, updatable = false)
     private User user;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "cart")
-    private Set<CartItem> cartItems = new HashSet<>();
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE, orphanRemoval = true,
+            targetEntity = CartItem.class, mappedBy = "cart")
+    private List<CartItem> cartItems = new ArrayList<>();
+
+    /**
+     * The total cost of all products in the cart
+     */
+    @Column(name = "TOTAL_COST")
+    private int totalCost = getCost(getCartItems());
+
+    private int getCost(List<CartItem> items) {
+        int cost =0;
+
+        for (CartItem item: items) {
+            cost += item.getProduct().getPrice() * item.getQuantity();
+
+        }
+        return 0;
+    }
 
     public Cart() {
     }
@@ -34,12 +51,20 @@ public class Cart extends AbstractEntity{
         this.user = user;
     }
 
-    public Set<CartItem> getCartItems() {
+    public List<CartItem> getCartItems() {
         return cartItems;
     }
 
-    public void setCartItems(Set<CartItem> cartItems) {
+    public void setCartItems(List<CartItem> cartItems) {
         this.cartItems = cartItems;
+    }
+
+    public int getTotalCost() {
+        return totalCost;
+    }
+
+    public void setTotalCost(int totalCost) {
+        this.totalCost = totalCost;
     }
 
     @Override

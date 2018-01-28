@@ -12,7 +12,6 @@ import java.time.LocalDateTime;
  */
 @MappedSuperclass
 public abstract class AbstractEntity {
-    public static final String FIELD_MODIFIED_AT = "modifiedAt";
     /**
      * Unique entity identifier
      */
@@ -29,15 +28,11 @@ public abstract class AbstractEntity {
     /**
      * Timestamp of entity update
      */
-    @Column(name = "MODIFIED_AT", insertable = false)
+    @Column(name = "MODIFIED_AT")
     private LocalDateTime modifiedAt;
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public LocalDateTime getCreatedAt() {
@@ -61,8 +56,8 @@ public abstract class AbstractEntity {
     public void prePersist() {
         if (getId() == 0) {
             setCreatedAt(LocalDateTime.now());
-            setModifiedAt(LocalDateTime.now());
-        } else setModifiedAt(LocalDateTime.now());
+        }
+        setModifiedAt(LocalDateTime.now());
     }
 
     @Override

@@ -18,8 +18,6 @@
         <strong>You are logged in as <sec:authentication property="principal.username"/>
             <a href="<c:url value="/logout"/>">Logout</a>
         </strong>
-        <br>
-        Goods in the cart is ${cart.cartItems.size()}
     </header>
 
     <div class="middle">
@@ -27,7 +25,7 @@
         <div class="container">
             <main class="content">
 
-                <c:if test="${!empty listProducts}">
+                <c:if test="${!empty listItems}">
                     <br/>
                     <br/>
 
@@ -36,24 +34,23 @@
                     <br>
                     <table class="tg">
                         <tr>
-                            <th width="80">ID</th>
                             <th width="120">Name</th>
                             <th width="120">Category</th>
                             <th width="120">Quantity</th>
                             <th width="120">Price</th>
-                            <th width="60"></th>
                         </tr>
-                        <c:forEach items="${listProducts}" var="product">
+                        <c:forEach items="${listItems}" var="cartItem">
                             <tr>
-                                <td>${product.id}</td>
-                                <td>${product.name}</td>
-                                <td>${product.category}</td>
-                                <td>${product.quantity}</td>
-                                <td>${product.price/100}</td>
-                                <td><a href="<c:url value='addProductToCart/${product.id}'/>">Add to cart</a></td>
-
+                                <td>${cartItem.product.name}</td>
+                                <td>${cartItem.product.category}</td>
+                                <td>${cartItem.quantity}</td>
+                                <td>${(cartItem.product.price * cartItem.quantity)/100}</td>
                             </tr>
                         </c:forEach>
+                        <tr>
+                            <td colspan="2" align="center">Total cost</td>
+                            <td colspan="2" align="center">${cart.totalCost}</td>
+                        </tr>
                     </table>
                 </c:if>
             </main><!-- .content -->
@@ -61,13 +58,13 @@
 
         <aside class="left-sidebar">
             <ul class="main-menu">
-                <li class="active"><a href="<c:url value="/customer/catalog"/>">Catalog</a></li>
+                <li><a href="<c:url value="/customer/catalog"/>">Catalog</a></li>
 
                 <li><a href="<c:url value="/customer/orders"/>">My orders</a></li>
 
                 <li><a href="<c:url value="/customer/cabinet"/>">My cabinet</a></li>
 
-                <li><a href="<c:url value="/customer/cart"/>">Cart</a></li>
+                <li class="active"><a href="<c:url value="/customer/cart"/>">Cart</a></li>
 
             </ul>
         </aside><!-- .left-sidebar -->
@@ -78,3 +75,4 @@
 
 </body>
 </html>
+

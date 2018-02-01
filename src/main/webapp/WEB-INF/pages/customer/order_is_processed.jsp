@@ -1,5 +1,3 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -23,23 +21,21 @@
 
         <div class="container">
             <main class="content">
-                <form method="post" action="/login"/>
-                <h2>Login</h2>
-                <input type="text" name="username" placeholder="Логин"/>
-                <br/>
-                <input id="loginPass" type="password" name="password" placeholder="Пароль"/>
-                <br/>
-                <button type="submit">Login</button>
-                </form>
+                Congratulations! Your order is processed. For more information click
+                <a href="<c:url value="/customer/orders"/>">My orders</a>
             </main><!-- .content -->
         </div><!-- .container-->
 
         <aside class="left-sidebar">
             <ul class="main-menu">
 
-                <li><a href="<c:url value="/registration"/>">Registration</a></li>
+                <li><a href="<c:url value="/customer/catalog"/>">Catalog</a></li>
 
-                <li><a href="<c:url value="/login"/>">Login</a></li>
+                <li><a href="<c:url value="/customer/orders"/>">My orders</a></li>
+
+                <li><a href="<c:url value="/customer/cabinet"/>">My cabinet</a></li>
+
+                <li><a href="<c:url value="/logout"/>">Logout</a></li>
             </ul>
         </aside><!-- .left-sidebar -->
 
@@ -49,3 +45,4 @@
 
 </body>
 </html>
+

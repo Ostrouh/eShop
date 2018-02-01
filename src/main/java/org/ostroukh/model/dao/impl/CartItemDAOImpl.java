@@ -68,7 +68,7 @@ public class CartItemDAOImpl implements CartItemDAO {
         List<CartItem> items = query.list();
 
         for(CartItem item: items){
-            LOGGER.info("Orders by user: " + item);
+            LOGGER.info("CartItems by Cart: " + item);
         }
         return items;
     }

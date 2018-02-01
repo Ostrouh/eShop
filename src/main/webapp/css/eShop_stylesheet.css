@@ -32,10 +32,18 @@ body {
     padding-bottom: 20px;
     font-size: large;
     text-align: center;
+    color: white;
     height: 10vh;
-    background: lightcoral;
+    background: #175cf0;
     border: 2px solid white;
     border-radius: 10px;
+}
+.header a{
+    color: white;
+}
+
+.header a:visited{
+    color: lightgrey;
 }
 
 /* Middle

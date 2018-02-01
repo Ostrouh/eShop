@@ -13,4 +13,10 @@ public interface CartService {
     Optional<Cart> getCartById(Integer id);
 
     void deleteCart(Cart cart);
+
+    int getTotalCost(Cart cart);
+
+    int getItemsInCart(Cart cart);
+
+    void clearCart(Cart cart);
 }

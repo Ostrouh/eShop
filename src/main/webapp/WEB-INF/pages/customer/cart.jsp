@@ -25,19 +25,21 @@
         <div class="container">
             <main class="content">
 
-                <c:if test="${!empty listItems}">
-                    <br/>
-                    <br/>
+                <br/>
+                <br/>
 
-                    <h1>Product List</h1>
-                    <br>
-                    <br>
+                <h1>List of goods in the cart</h1>
+                <br>
+                <br>
+                <c:if test="${!empty listItems}">
+
                     <table class="tg">
                         <tr>
                             <th width="120">Name</th>
                             <th width="120">Category</th>
                             <th width="120">Quantity</th>
                             <th width="120">Price</th>
+                            <th width="120">Remove</th>
                         </tr>
                         <c:forEach items="${listItems}" var="cartItem">
                             <tr>
@@ -45,14 +47,19 @@
                                 <td>${cartItem.product.category}</td>
                                 <td>${cartItem.quantity}</td>
                                 <td>${(cartItem.product.price * cartItem.quantity)/100}</td>
+                                <td><a href="<c:url value='cart/removeFromCart/${cartItem.id}'/>">Remove from cart</a></td>
                             </tr>
                         </c:forEach>
                         <tr>
-                            <td colspan="2" align="center">Total cost</td>
-                            <td colspan="2" align="center">${cart.totalCost}</td>
+                            <td colspan="4" align="center">Total cost</td>
+                            <td colspan="1" align="center">${cart.totalCost/100}</td>
                         </tr>
                     </table>
                 </c:if>
+
+                <form method="post" action="/customer/checkout"/>
+                <button type="submit">Checkout of order</button>
+                </form>
             </main><!-- .content -->
         </div><!-- .container-->
 

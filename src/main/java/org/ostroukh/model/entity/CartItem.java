@@ -12,14 +12,14 @@ public class CartItem extends AbstractEntity{
     /**
      * Product added by the customer in the specified order
      */
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)//CascadeType:ALL
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)//CascadeType:ALL
     @JoinColumn(name = "PRODUCT_ID", nullable = false)
     private Product product;
 
     /**
      * Order that contains specified product
      */
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)//CascadeType:ALL
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)//CascadeType:ALL
     @JoinColumn(name = "CART_ID", nullable = false, referencedColumnName = "id")
     private Cart cart;
 
@@ -71,8 +71,6 @@ public class CartItem extends AbstractEntity{
         CartItem cartItem = (CartItem) o;
 
         return new EqualsBuilder()
-                .appendSuper(super.equals(o))
-                .append(quantity, cartItem.quantity)
                 .append(product, cartItem.product)
                 .append(cart, cartItem.cart)
                 .isEquals();
@@ -81,10 +79,8 @@ public class CartItem extends AbstractEntity{
     @Override
     public int hashCode() {
         return new HashCodeBuilder(17, 37)
-                .appendSuper(super.hashCode())
                 .append(product)
                 .append(cart)
-                .append(quantity)
                 .toHashCode();
     }
 

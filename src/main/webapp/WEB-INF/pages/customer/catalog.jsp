@@ -15,11 +15,12 @@
 <div class="wrapper">
 
     <header class="header">
+        <br>
         <strong>You are logged in as <sec:authentication property="principal.username"/>
             <a href="<c:url value="/logout"/>">Logout</a>
         </strong>
         <br>
-        Goods in the cart is ${cart.cartItems.size()}
+        Goods in the cart is ${cart.itemsAmount}
     </header>
 
     <div class="middle">

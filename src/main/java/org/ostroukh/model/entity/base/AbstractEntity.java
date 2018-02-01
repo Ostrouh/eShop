@@ -71,7 +71,6 @@ public abstract class AbstractEntity {
         return new EqualsBuilder()
                 .append(id, that.id)
                 .append(createdAt, that.createdAt)
-                .append(modifiedAt, that.modifiedAt)
                 .isEquals();
     }
 
@@ -80,7 +79,6 @@ public abstract class AbstractEntity {
         return new HashCodeBuilder(17, 37)
                 .append(id)
                 .append(createdAt)
-                .append(modifiedAt)
                 .toHashCode();
     }
 }

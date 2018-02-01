@@ -28,17 +28,11 @@ public class Cart extends AbstractEntity{
      * The total cost of all products in the cart
      */
     @Column(name = "TOTAL_COST")
-    private int totalCost = getCost(getCartItems());
+    private int totalCost;
 
-    private int getCost(List<CartItem> items) {
-        int cost =0;
+    @Column(name = "ITEMS_AMOUNT")
+    private int itemsAmount;
 
-        for (CartItem item: items) {
-            cost += item.getProduct().getPrice() * item.getQuantity();
-
-        }
-        return 0;
-    }
 
     public Cart() {
     }
@@ -67,6 +61,14 @@ public class Cart extends AbstractEntity{
         this.totalCost = totalCost;
     }
 
+    public int getItemsAmount() {
+        return itemsAmount;
+    }
+
+    public void setItemsAmount(int itemsInCart) {
+        this.itemsAmount = itemsInCart;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -78,7 +80,6 @@ public class Cart extends AbstractEntity{
         return new EqualsBuilder()
                 .appendSuper(super.equals(o))
                 .append(user, cart.user)
-                .append(cartItems, cart.cartItems)
                 .isEquals();
     }
 
@@ -87,7 +88,6 @@ public class Cart extends AbstractEntity{
         return new HashCodeBuilder(17, 37)
                 .appendSuper(super.hashCode())
                 .append(user)
-                .append(cartItems)
                 .toHashCode();
     }
 

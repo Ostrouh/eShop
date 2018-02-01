@@ -1,5 +1,7 @@
 package org.ostroukh.model.entity;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.ostroukh.model.entity.base.AbstractEntity;
 import org.ostroukh.model.entity.enums.ProductCategory;
 
@@ -110,6 +112,32 @@ public class Product extends AbstractEntity {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Product product = (Product) o;
+
+        return new EqualsBuilder()
+                .appendSuper(super.equals(o))
+                .append(price, product.price)
+                .append(name, product.name)
+                .append(category, product.category)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder(17, 37)
+                .appendSuper(super.hashCode())
+                .append(name)
+                .append(category)
+                .append(price)
+                .toHashCode();
     }
 
     @Override

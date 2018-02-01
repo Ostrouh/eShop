@@ -5,7 +5,7 @@ drop table if exists ORDERED_PRODUCT;
 drop table if exists ORDERS;
 drop table if exists PRODUCT;
 drop table if exists USER;
-create table CART (id integer not null auto_increment, CREATED_AT datetime not null, MODIFIED_AT datetime, TOTAL_COST integer, USER_ID integer not null, primary key (id)) engine=MyISAM;
+create table CART (id integer not null auto_increment, CREATED_AT datetime not null, MODIFIED_AT datetime, ITEMS_AMOUNT integer, TOTAL_COST integer, USER_ID integer not null, primary key (id)) engine=MyISAM;
 create table CART_ITEM (id integer not null auto_increment, CREATED_AT datetime not null, MODIFIED_AT datetime, QUANTITY integer, CART_ID integer not null, PRODUCT_ID integer not null, primary key (id)) engine=MyISAM;
 create table CREDENTIAL (id integer not null auto_increment, CREATED_AT datetime not null, MODIFIED_AT datetime, EMAIL varchar(64), IS_IN_BLACK_LIST bit not null, LOGIN varchar(255) not null, PASSWORD varchar(255) not null, ROLE varchar(255) not null, primary key (id)) engine=MyISAM;
 create table ORDERED_PRODUCT (id integer not null auto_increment, CREATED_AT datetime not null, MODIFIED_AT datetime, QUANTITY integer, ORDER_ID integer not null, PRODUCT_ID integer not null, primary key (id)) engine=MyISAM;

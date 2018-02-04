@@ -13,22 +13,15 @@
 <div class="wrapper">
 
     <header class="header">
-        <strong>Header:</strong>
     </header><!-- .header-->
 
     <div class="middle">
 
         <div class="container">
             <main class="content">
-                <br>
-                <br>
-                <h2>Welcome <sec:authentication property="principal.username" />!</h2>
-
-                <br>
-                <br>
-                <h3>
+                <p class="text">Welcome <sec:authentication property="principal.username" />!
                     Now You can manage the catalog, the list of users and the list of orders.
-                </h3>
+                </p>
             </main><!-- .content -->
         </div><!-- .container-->
 

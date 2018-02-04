@@ -90,6 +90,7 @@ public class RegistrationController {
 
     @RequestMapping(value = "/registration_success", method = RequestMethod.GET)
     public String registrationSuccess() {
+        LOGGER.info("Registration successfully finished");
         return "registration_success";
     }
 
@@ -106,7 +107,7 @@ public class RegistrationController {
             SecurityContextHolder.getContext().setAuthentication(auth);
         } catch (BadCredentialsException e){
         }
-
+        LOGGER.info(login + "Successfully logged in as CUSTOMER");
     }
 
 }

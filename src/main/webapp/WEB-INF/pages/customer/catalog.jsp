@@ -6,7 +6,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Catalog management</title>
+    <title>Catalog</title>
     <style>
         <%@include file="/css/eShop_stylesheet.css"%>
     </style>
@@ -37,12 +37,12 @@
                     <br>
                     <table class="tg">
                         <tr>
-                            <th width="80">ID</th>
-                            <th width="120">Name</th>
-                            <th width="120">Category</th>
-                            <th width="120">Quantity</th>
-                            <th width="120">Price</th>
-                            <th width="60"></th>
+                            <th width="10%">ID</th>
+                            <th width="20%">Name</th>
+                            <th width="20%">Category</th>
+                            <th width="20%">Quantity</th>
+                            <th width="20%">Price</th>
+                            <th width="10%"></th>
                         </tr>
                         <c:forEach items="${listProducts}" var="product">
                             <tr>

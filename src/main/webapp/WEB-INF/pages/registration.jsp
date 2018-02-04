@@ -118,7 +118,7 @@
                         </tr>
 
                         <tr>
-                            <td colspan="2" align="center">
+                            <td colspan="2">
                                     <input type="submit"
                                            value="<spring:message text="sign-up"/>"/>
                             </td>

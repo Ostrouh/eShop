@@ -2,6 +2,7 @@ package org.ostroukh.controller.admin;
 
 import org.ostroukh.model.entity.Credential;
 import org.ostroukh.model.entity.User;
+import org.ostroukh.model.service.CredentialService;
 import org.ostroukh.model.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,9 +21,12 @@ import java.util.Optional;
 @RequestMapping("/admin")
 public class UsersManagementController {
     private static final Logger LOGGER = LoggerFactory.getLogger(UsersManagementController.class);
-
+    private int id = 0;
     @Autowired
     UserService userService;
+
+    @Autowired
+    CredentialService credentialService;
 
     @RequestMapping("/users")
     public String getUsers(Model model){
@@ -41,6 +45,7 @@ public class UsersManagementController {
 
             model.addAttribute("user", user);
             model.addAttribute("credentials", credential);
+            this.id = id;
         } else {
             return "admin/users_mng";
         }
@@ -50,11 +55,17 @@ public class UsersManagementController {
     }
 
     @RequestMapping("/users/update")
-    public String updateUser(@Valid @ModelAttribute("user") User user, BindingResult bindingResult){
+    public String updateUser(@Valid @ModelAttribute("user") User user,
+                             BindingResult bindingResult){
         if (bindingResult.hasErrors()){
             return "admin/users_mng";
         }
+        user.insertId(id);
+        Credential credential = user.getCredential();
+        credential.insertId(id);
+        credentialService.saveCredential(credential);
         userService.saveUser(user);
+        this.id = 0;
 
         return "redirect:/admin/users";
     }

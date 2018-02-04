@@ -42,7 +42,8 @@ public class LoginController {
         String page = "access_denied";
 
         if (user != null) {
-            model.addAttribute("user", user.getUsername());
+            String username = user.getUsername();
+            model.addAttribute("user", username);
             model.addAttribute("cart", userService.getUserByLogin(user.getUsername()).getCart());
 
             switch (user.getAuthorities().toArray()[0].toString()) {

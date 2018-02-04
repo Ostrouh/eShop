@@ -6,11 +6,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <meta charset="utf-8"/>
-    <title>Users management</title>
+    <title>Cabinet</title>
     <style>
         <%@include file="/css/eShop_stylesheet.css"%>
     </style>
+</head>
+
 <body>
 
 <div class="wrapper">
@@ -19,56 +20,44 @@
         <strong>You are logged in as <sec:authentication property="principal.username"/>
             <a href="<c:url value="/logout"/>">Logout</a>
         </strong>
-    </header>
+    </header><!-- .header-->
 
     <div class="middle">
 
         <div class="container">
             <main class="content">
-
-                <c:if test="${!empty listUsers}">
-                    <br/>
-                    <br/>
-
-                    <h1>List of users</h1>
-                    <br>
-                    <br>
-                    <table class="tg">
-                        <tr>
-                            <th width="5%">ID</th>
-                            <th width="10%">Name</th>
-                            <th width="10%">Surname</th>
-                            <th width="15%">Address</th>
-                            <th width="15%">Phone</th>
-                            <th width="10%">Email</th>
-                            <th width="10%">Login</th>
-                            <th width="10%">Role</th>
-                            <th width="10%">Status</th>
-                            <th width="5%">Edit</th>
-                        </tr>
-                        <c:forEach items="${listUsers}" var="user">
-                            <tr>
-                                <td>${user.id}</td>
-                                <td>${user.name}</td>
-                                <td>${user.surname}</td>
-                                <td>${user.address}</td>
-                                <td>${user.phoneNumber}</td>
-                                <td>${user.credential.email}</td>
-                                <td>${user.credential.login}</td>
-                                <td>${user.credential.role.toString()}</td>
-                                <td>${user.credential.inBlackList ? "In black list" : "Not in black list"}</td>
-                                <td><a href="<c:url value='/admin/editUser/${user.id}'/>">Edit</a></td>
-                            </tr>
-                        </c:forEach>
-                    </table>
-                </c:if>
-
-                <c:url var="addAction" value="/admin/users/update"/>
-
-                <form:form action="${addAction}" modelAttribute="user">
-                    <c:if test="${!empty user.name}">
+                <br/>
+                <br/>
+                <h1>My data</h1>
+                <br>
+                <br>
+                <table class="tg">
+                    <tr>
+                        <th width="80">ID</th>
+                        <th width="120">Name</th>
+                        <th width="120">Surname</th>
+                        <th width="120">Address</th>
+                        <th width="120">Phone</th>
+                        <th width="120">Email</th>
+                        <th width="120">Login</th>
+                        <th width="120">Edit</th>
+                    </tr>
+                    <tr>
+                        <td>${currentUser.id}</td>
+                        <td>${currentUser.name}</td>
+                        <td>${currentUser.surname}</td>
+                        <td>${currentUser.address}</td>
+                        <td>${currentUser.phoneNumber}</td>
+                        <td>${currentUser.credential.email}</td>
+                        <td>${currentUser.credential.login}</td>
+                        <td><a href="<c:url value='/customer/cabinet/edit/${currentUser.id}'/>">Edit</a></td>
+                    </tr>
+                </table>
+                <!-- <c:url var="addAction" value="/customer/cabinet/update"/>
+                <form:form action="${addAction}" modelAttribute="currentUser">
+                    <c:if test="${!empty currentUser.name}">
                         <br>
-                        <h1>Edit user</h1>
+                        <h1>Edit my data</h1>
                         <br>
                         <br>
                         <table width="100%">
@@ -141,7 +130,7 @@
                                     </form:label>
                                 </td>
                                 <td>
-                                    <form:input path="credential.email" readonly="true"/>
+                                    <form:input path="credential.email"/>
                                 </td>
                             </tr>
                             <tr>
@@ -166,49 +155,36 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <form:label path="credential.role">
-                                        <spring:message text="Role"/>
-                                    </form:label>
-                                </td>
-                                <td>
-                                    <form:select path="credential.role">
-                                        <form:option value="ROLE_CUSTOMER" label="CUSTOMER"/>
-                                        <form:option value="ROLE_ADMIN" label="ADMIN"/>
-                                    </form:select>
+                                    <form:hidden path="credential.role"/>
                                 </td>
                             </tr>
                             <tr>
+
                                 <td>
-                                    <form:label path="credential.inBlackList">
-                                        <spring:message text="Status"/>
-                                    </form:label>
-                                </td>
-                                <td>
-                                    <form:select path="credential.inBlackList">
-                                        <form:option value="false" label="Not in BL"/>
-                                        <form:option value="true" label="In BL"/>
-                                    </form:select>
+                                    <form:hidden path="credential.inBlackList"/>
                                 </td>
                             </tr>
                             <tr>
                                 <td colspan="2" align="center">
                                     <input type="submit"
-                                           value="<spring:message text="Edit user"/>"/>
+                                           value="<spring:message text="Edit my data"/>"/>
                                 </td>
                             </tr>
                         </table>
                     </c:if>
-                </form:form>
+                </form:form> -->
             </main><!-- .content -->
         </div><!-- .container-->
 
         <aside class="left-sidebar">
             <ul class="main-menu">
-                <li><a href="<c:url value="/admin/catalog"/>">Catalog</a></li>
+                <li><a href="<c:url value="/customer/catalog"/>">Catalog</a></li>
 
-                <li class="active"><a href="<c:url value="/admin/users"/>">Users</a></li>
+                <li><a href="<c:url value="/customer/orders"/>">My orders</a></li>
 
-                <li><a href="<c:url value="/admin/orders"/>">Orders</a></li>
+                <li class="active"><a href="<c:url value="/customer/cabinet"/>">My cabinet</a></li>
+
+                <li><a href="<c:url value="/customer/cart"/>">Cart</a></li>
 
             </ul>
         </aside><!-- .left-sidebar -->

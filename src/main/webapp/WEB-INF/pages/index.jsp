@@ -2,8 +2,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
     <title>EShop</title>
     <style>
         <%@include file="/css/eShop_stylesheet.css"%>
@@ -14,14 +12,13 @@
 <div class="wrapper">
 
     <header class="header">
-        <strong>Header:</strong>
+        <strong>Welcome to EShop - Eugene's Ostroukh project for EPAM training</strong>
     </header><!-- .header-->
 
     <div class="middle">
 
         <div class="container">
             <main class="content">
-                <strong>Content:</strong>
             </main><!-- .content -->
         </div><!-- .container-->
 

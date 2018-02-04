@@ -48,7 +48,7 @@ public class User extends AbstractEntity {
     /**
      * Set of orders that specific user placed
      */
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "user", orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER, mappedBy = "user", orphanRemoval = true)
     private Set<Order> orders = new HashSet<>();
 
     public User(String name, String surname, String address, String phoneNumber, int discount) {

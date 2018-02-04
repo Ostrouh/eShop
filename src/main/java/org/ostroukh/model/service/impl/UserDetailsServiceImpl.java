@@ -25,8 +25,6 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 
         User user = userService.getUserByLogin(login);
 
-        System.out.println(user.getName());
-
         if (user != null){
             Set<GrantedAuthority> roles = new HashSet<>();
             roles.add(new SimpleGrantedAuthority(user.getCredential().getRole().name()));

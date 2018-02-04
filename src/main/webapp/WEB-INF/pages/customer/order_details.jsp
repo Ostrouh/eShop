@@ -6,7 +6,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Catalog management</title>
+    <title>Order details</title>
     <style>
         <%@include file="/css/eShop_stylesheet.css"%>
     </style>
@@ -24,29 +24,25 @@
 
         <div class="container">
             <main class="content">
-
-                <c:if test="${true}">
-                    <br/>
-                    <br/>
-
-                    <h1>List of orders</h1>
-                    <br>
-                    <br>
+                <br/>
+                <br/>
+                <h1>List of products that this order contains</h1>
+                <br>
+                <br>
+                <c:if test="${!empty productsList}">
                     <table class="tg">
                         <tr>
-                            <th width="20%">№</th>
-                            <th width="20%">Date</th>
-                            <th width="20%">Status</th>
-                            <th width="20%">Total Cost</th>
-                            <th width="20%">Details</th>
+                            <th width="120">Name</th>
+                            <th width="120">Category</th>
+                            <th width="120">Quantity</th>
+                            <th width="120">Cost</th>
                         </tr>
-                        <c:forEach items="${ordersList}" var="order">
+                        <c:forEach items="${productsList}" var="orderedProduct">
                             <tr>
-                                <td>${order.id}</td>
-                                <td>${order.createdAt}</td>
-                                <td>${order.status}</td>
-                                <td>${order.totalCost/100}</td>
-                                <td><a href="<c:url value='orders/details/${order.id}'/>">Details</a></td>
+                                <td>${orderedProduct.product.name}</td>
+                                <td>${orderedProduct.product.category}</td>
+                                <td>${orderedProduct.quantity}</td>
+                                <td>${orderedProduct.quantity * orderedProduct.product.price/100}</td>
 
                             </tr>
                         </c:forEach>
@@ -74,4 +70,5 @@
 
 </body>
 </html>
+
 

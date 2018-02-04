@@ -1,6 +1,9 @@
 package org.ostroukh.controller.customer;
 
-import org.ostroukh.model.entity.*;
+import org.ostroukh.model.entity.Cart;
+import org.ostroukh.model.entity.CartItem;
+import org.ostroukh.model.entity.Order;
+import org.ostroukh.model.entity.OrderedProduct;
 import org.ostroukh.model.entity.enums.OrderStatus;
 import org.ostroukh.model.service.CartItemService;
 import org.ostroukh.model.service.CartService;
@@ -15,11 +18,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.bind.support.SessionStatus;
 
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 @Controller
 @RequestMapping("/customer")
@@ -49,15 +50,16 @@ public class CartController {
     }
 
     @RequestMapping("/checkout")
-    public String checkout(@ModelAttribute("cart") Cart cart, SessionStatus status, ModelMap model){
+    public String checkout(@ModelAttribute("cart") Cart cart){
         Order order = new Order();
         order.setStatus(OrderStatus.NEW);
+        orderService.saveOrder(order);
 
         copyCartToOrder(cart, order);
+
         cartService.clearCart(cart);
         cartService.saveCart(cart);
         orderService.saveOrder(order);
-        status.setComplete();
 
         return "customer/order_is_processed";
     }
@@ -85,17 +87,22 @@ public class CartController {
     private void copyCartToOrder(Cart cart, Order order){
         order.setUser(cart.getUser());
         order.setTotalCost(cart.getTotalCost());
-        Set<OrderedProduct> orderedProductSet = new HashSet<>();
-        OrderedProduct orderedProduct = new OrderedProduct();
+        List<OrderedProduct> orderedProducts = new ArrayList<>();
+        OrderedProduct orderedProduct;
 
-        for (CartItem item: cart.getCartItems()){
+        List<CartItem> items = cart.getCartItems();
+
+        for (CartItem item: items){
+            orderedProduct = new OrderedProduct();
             orderedProduct.setOrder(order);
             orderedProduct.setProduct(item.getProduct());
             orderedProduct.setQuantity(item.getQuantity());
 
-            orderedProductSet.add(orderedProduct);
+            orderedProducts.add(orderedProduct);
+
             orderedProductService.saveOrderedProduct(orderedProduct);
             cartItemService.deleteCartItem(item);
         }
+        order.setProducts(orderedProducts);
     }
 }

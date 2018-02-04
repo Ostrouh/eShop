@@ -29,7 +29,7 @@ body {
 /* Header
 -----------------------------------------------------------------------------*/
 .header {
-    padding-bottom: 20px;
+    padding: 1em;
     font-size: large;
     text-align: center;
     color: white;
@@ -68,7 +68,7 @@ body {
 
 .content {
     padding: 0 0 0 270px;
-    /*min-height: calc(100vh - 180px);*/
+    min-height: 100%;
 }
 
 /* Left Sidebar
@@ -86,24 +86,13 @@ body {
 
 }
 
-/* Footer
------------------------------------------------------------------------------*/
-.footer {
-    margin: -100px auto 0;
-    min-width: 1000px;
-    max-width: 1920px;
-    height: 8vh;
-    font-size: 16px;
-    background: lightgreen;
-    border: 2px solid white;
-    position: relative;
-    text-align: center;
-    border-radius: 10px;
-
-}
-
 /* Tables
 ------------------------------------------------------------------------------ */
+table{
+    width: 95%;
+    margin: auto;
+}
+
 .tg {
     border-collapse: collapse;
     border-spacing: 0;
@@ -116,6 +105,7 @@ body {
 }
 
 .tg td {
+    text-align: center;
     font-family: Arial, sans-serif;
     font-size: 14px;
     padding: 10px 5px;
@@ -155,7 +145,6 @@ body {
 /* Main menu
  --------------------------------------------------------------------------------*/
 .main-menu {
-    width: 180px;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -181,53 +170,11 @@ body {
     background: #0088cc;
 }
 
-/*******************************************************************************
- *                                                                             *
- * Push Button                                                                 *
- *                                                                             *
- ******************************************************************************/
-
-.button {
-    text-fill: white;
-    background-color: linear-gradient(#61a2b1, #2A5058);
-    background-radius: 25;
+button{
+    margin: 20px;
+}
+input{
+    margin: 10px;
+    height: 20px;
 }
 
-.button:hover{
-    background-color: linear-gradient(#2A5058, #61a2b1);
-    background-radius: 20;
-}
-
-.button:pressed, .button:default:hover:pressed
-{
-    background-color: linear-gradient(#61a2b1, #2A5058);
-    text-fill: #1d1d1d;
-    background-radius: 20;
-}
-
-.button:focused
-{
-    border-color: linear-gradient(#2A5058, #61a2b1);
-    border-width: 1, 1;
-    border-style: solid, segments(1, 1);
-    border-radius: 0, 0;
-    border-insets: 1 1 1 1, 0;
-    border-radius: 20;
-}
-
-.button:disabled, .button:default:disabled
-{
-    opacity: 0.4;
-    background-color: #1d1d1d;
-    text-fill: white;
-}
-
-.button:default
-{
-    background-color: #008287;
-    text-fill: #ffffff;
-}
-
-.button:default:hover{
-    background-color: #219297;
-}

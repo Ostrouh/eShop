@@ -6,8 +6,8 @@ import org.ostroukh.model.entity.base.AbstractEntity;
 import org.ostroukh.model.entity.enums.OrderStatus;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Entity that contains data of a specific order
@@ -25,7 +25,7 @@ public class Order extends AbstractEntity {
     /**
      * User who placed an order
      */
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinColumn(name = "USER_ID")
     private User user;
 ;
@@ -33,7 +33,7 @@ public class Order extends AbstractEntity {
      * Set of products in specific order
      */
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "order")
-    private Set<OrderedProduct> orderedProducts = new HashSet<>();
+    private List<OrderedProduct> orderedProducts = new ArrayList<>();
 
     /**
      * Status of order
@@ -61,11 +61,11 @@ public class Order extends AbstractEntity {
         this.user = user;
     }
 
-    public Set<OrderedProduct> getProducts() {
+    public List<OrderedProduct> getProducts() {
         return orderedProducts;
     }
 
-    public void setProducts(Set<OrderedProduct> orderedProducts) {
+    public void setProducts(List<OrderedProduct> orderedProducts) {
         this.orderedProducts = orderedProducts;
     }
 

@@ -18,6 +18,9 @@
         <strong>You are logged in as <sec:authentication property="principal.username"/>
                 <a href="<c:url value="/logout"/>">Logout</a>
         </strong>
+        <br>
+        <br>
+        <h5>This page manages the catalog of goods: adding new products and editing existing</h5>
     </header>
 
     <div class="middle">
@@ -35,13 +38,13 @@
                     <table class="tg">
                         <thead>
                         <tr>
-                            <th width="80">ID</th>
-                            <th width="120">Name</th>
-                            <th width="120">Category</th>
-                            <th width="120">Quantity</th>
-                            <th width="120">Price</th>
-                            <th width="60">Edit</th>
-                            <th width="60">Delete</th>
+                            <th width="10%">ID</th>
+                            <th width="18%">Name</th>
+                            <th width="18%">Category</th>
+                            <th width="18%">Quantity</th>
+                            <th width="18%">Price</th>
+                            <th width="9%">Edit</th>
+                            <th width="9%">Delete</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -52,8 +55,8 @@
                                 <td>${product.category}</td>
                                 <td>${product.quantity}</td>
                                 <td>${product.price/100}</td>
-                                <td><a href="<c:url value='editProduct/${product.id}'/>">Edit</a></td>
-                                <td><a href="<c:url value='deleteProduct/${product.id}'/>">Delete</a></td>
+                                <td><a href="<c:url value='/admin/editProduct/${product.id}'/>">Edit</a></td>
+                                <td><a href="<c:url value='/admin/deleteProduct/${product.id}'/>">Delete</a></td>
                             </tr>
                         </c:forEach>
                         </tbody>
@@ -68,7 +71,7 @@
 
                 <form:form action="${addAction}" modelAttribute="product">
                     <table>
-                        <c:if test="${!empty product.name}">
+                        <c:if test="${product.id != 0}">
                             <tr>
                                 <td>
                                     <form:label path="id">

@@ -20,7 +20,15 @@
 
         <div class="container">
             <main class="content">
+                <br>
+                <br>
                 <h2>Welcome <sec:authentication property="principal.username" />!</h2>
+
+                <br>
+                <br>
+                <h3>
+                    Now You can manage the catalog, the list of users and the list of orders.
+                </h3>
             </main><!-- .content -->
         </div><!-- .container-->
 
@@ -29,6 +37,8 @@
                 <li><a href="<c:url value="admin/catalog"/>">Catalog</a></li>
 
                 <li><a href="<c:url value="admin/users"/>">Users</a></li>
+
+                <li><a href="<c:url value="/admin/orders"/>">Orders</a></li>
 
                 <li><a href="<c:url value="/logout"/>">Logout</a></li>
             </ul>

@@ -6,7 +6,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Catalog management</title>
+    <title>Catalog</title>
     <style>
         <%@include file="/css/eShop_stylesheet.css"%>
     </style>
@@ -35,11 +35,11 @@
 
                     <table class="tg">
                         <tr>
-                            <th width="120">Name</th>
-                            <th width="120">Category</th>
-                            <th width="120">Quantity</th>
-                            <th width="120">Price</th>
-                            <th width="120">Remove</th>
+                            <th width="20%">Name</th>
+                            <th width="20%">Category</th>
+                            <th width="20%">Quantity</th>
+                            <th width="20%">Price</th>
+                            <th width="20%">Remove</th>
                         </tr>
                         <c:forEach items="${listItems}" var="cartItem">
                             <tr>
@@ -55,11 +55,10 @@
                             <td colspan="1" align="center">${cart.totalCost/100}</td>
                         </tr>
                     </table>
+                    <form method="post" action="/customer/checkout"/>
+                    <button type="submit">Checkout of order</button>
+                    </form>
                 </c:if>
-
-                <form method="post" action="/customer/checkout"/>
-                <button type="submit">Checkout of order</button>
-                </form>
             </main><!-- .content -->
         </div><!-- .container-->
 

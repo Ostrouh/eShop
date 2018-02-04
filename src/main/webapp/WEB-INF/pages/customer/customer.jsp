@@ -19,6 +19,8 @@
 
         <div class="container">
             <main class="content">
+                <br>
+                <br>
                 <h2>Welcome <sec:authentication property="principal.username" />!</h2>
             </main><!-- .content -->
         </div><!-- .container-->
@@ -30,6 +32,8 @@
                 <li><a href="<c:url value="/customer/orders"/>">My orders</a></li>
 
                 <li><a href="<c:url value="/customer/cabinet"/>">My cabinet</a></li>
+
+                <li><a href="<c:url value="/customer/cart"/>">Cart</a></li>
 
                 <li><a href="<c:url value="/logout"/>">Logout</a></li>
             </ul>

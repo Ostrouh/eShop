@@ -12,14 +12,14 @@ public class CartItem extends AbstractEntity{
     /**
      * Product added by the customer in the specified order
      */
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)//CascadeType:ALL
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinColumn(name = "PRODUCT_ID", nullable = false)
     private Product product;
 
     /**
      * Order that contains specified product
      */
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)//CascadeType:ALL
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinColumn(name = "CART_ID", nullable = false, referencedColumnName = "id")
     private Cart cart;
 

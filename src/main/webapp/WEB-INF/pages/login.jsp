@@ -23,11 +23,14 @@
 
         <div class="container">
             <main class="content">
+                <br>
+                <br>
                 <form method="post" action="/login"/>
                 <h2>Login</h2>
-                <input type="text" name="username" placeholder="Логин"/>
+                <br>
+                <input type="text" name="username" placeholder="login"/>
                 <br/>
-                <input id="loginPass" type="password" name="password" placeholder="Пароль"/>
+                <input id="loginPass" type="password" name="password" placeholder="password"/>
                 <br/>
                 <button type="submit">Login</button>
                 </form>

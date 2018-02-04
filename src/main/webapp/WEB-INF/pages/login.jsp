@@ -4,8 +4,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
     <title>EShop</title>
     <style>
         <%@include file="/css/eShop_stylesheet.css"%>
@@ -16,7 +14,6 @@
 <div class="wrapper">
 
     <header class="header">
-        <strong>Header:</strong>
     </header><!-- .header-->
 
     <div class="middle">
@@ -26,7 +23,7 @@
                 <br>
                 <br>
                 <form method="post" action="/login"/>
-                <h2>Login</h2>
+                <h1>Login</h1>
                 <br>
                 <input class="signin" type="text" name="username" placeholder="login"/>
                 <br/>
@@ -34,6 +31,34 @@
                 <br/>
                 <button class="button" type="submit">Login</button>
                 </form>
+
+                <p class="text">
+                    The store has several users by default:
+                    <br>
+                    <br>
+                <table class="tg">
+                    <tr>
+                        <th>Login</th>
+                        <th>Password</th>
+                        <th>Role</th>
+                    </tr>
+                    <tr>
+                        <td>admin</td>
+                        <td>admin</td>
+                        <td>ADMIN</td>
+                    </tr>
+                    <tr>
+                        <td>customer0</td>
+                        <td>customer0</td>
+                        <td>CUSTOMER</td>
+                    </tr>
+                    <tr>
+                        <td>customer1</td>
+                        <td>customer1</td>
+                        <td>CUSTOMER</td>
+                    </tr>
+                </table>
+                </p>
             </main><!-- .content -->
         </div><!-- .container-->
 

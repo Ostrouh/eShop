@@ -12,15 +12,19 @@
 <div class="wrapper">
 
     <header class="header">
-        <strong>Header:</strong>
+        <p class="text" align="left">You are logged in as <sec:authentication property="principal.username"/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="<c:url value="/logout"/>">Logout</a>
+        </p>
     </header><!-- .header-->
 
     <div class="middle">
 
         <div class="container">
             <main class="content">
-                Congratulations! Your order is processed. For more information click
+                <p class="text">
+                    Congratulations! Your order is processed. For more information click
                 <a href="<c:url value="/customer/orders"/>">My orders</a>
+                </p>
             </main><!-- .content -->
         </div><!-- .container-->
 

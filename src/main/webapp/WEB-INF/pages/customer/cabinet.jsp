@@ -17,9 +17,9 @@
 <div class="wrapper">
 
     <header class="header">
-        <strong>You are logged in as <sec:authentication property="principal.username"/>
-            <a href="<c:url value="/logout"/>">Logout</a>
-        </strong>
+        <p class="text" align="left">You are logged in as <sec:authentication property="principal.username"/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="<c:url value="/logout"/>">Logout</a>
+        </p>
     </header><!-- .header-->
 
     <div class="middle">
@@ -33,14 +33,14 @@
                 <br>
                 <table class="tg">
                     <tr>
-                        <th width="80">ID</th>
-                        <th width="120">Name</th>
-                        <th width="120">Surname</th>
-                        <th width="120">Address</th>
-                        <th width="120">Phone</th>
-                        <th width="120">Email</th>
-                        <th width="120">Login</th>
-                        <th width="120">Edit</th>
+                        <th width="10%">ID</th>
+                        <th width="15%">Name</th>
+                        <th width="15%">Surname</th>
+                        <th width="15%">Address</th>
+                        <th width="15%">Phone</th>
+                        <th width="15%">Email</th>
+                        <th width="15%">Login</th>
+                        <!--<th width="120">Edit</th>-->
                     </tr>
                     <tr>
                         <td>${currentUser.id}</td>
@@ -50,7 +50,7 @@
                         <td>${currentUser.phoneNumber}</td>
                         <td>${currentUser.credential.email}</td>
                         <td>${currentUser.credential.login}</td>
-                        <td><a href="<c:url value='/customer/cabinet/edit/${currentUser.id}'/>">Edit</a></td>
+                        <!--<td><a href="<c:url value='/customer/cabinet/edit/${currentUser.id}'/>">Edit</a></td>-->
                     </tr>
                 </table>
                 <!-- <c:url var="addAction" value="/customer/cabinet/update"/>

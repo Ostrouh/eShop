@@ -15,9 +15,9 @@
 <div class="wrapper">
 
     <header class="header">
-        <strong>You are logged in as <sec:authentication property="principal.username"/>
-            <a href="<c:url value="/logout"/>">Logout</a>
-        </strong>
+        <p class="text" align="left">You are logged in as <sec:authentication property="principal.username"/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="<c:url value="/logout"/>">Logout</a>
+        </p>
     </header>
 
     <div class="middle">
@@ -32,10 +32,10 @@
                 <c:if test="${!empty productsList}">
                     <table class="tg">
                         <tr>
-                            <th width="120">Name</th>
-                            <th width="120">Category</th>
-                            <th width="120">Quantity</th>
-                            <th width="120">Cost</th>
+                            <th width="25%">Name</th>
+                            <th width="25%">Category</th>
+                            <th width="25%">Quantity</th>
+                            <th width="25%">Cost</th>
                         </tr>
                         <c:forEach items="${productsList}" var="orderedProduct">
                             <tr>

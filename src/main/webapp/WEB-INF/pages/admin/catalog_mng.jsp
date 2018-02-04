@@ -15,19 +15,18 @@
 <div class="wrapper">
 
     <header class="header">
-        <strong>You are logged in as <sec:authentication property="principal.username"/>
-                <a href="<c:url value="/logout"/>">Logout</a>
-        </strong>
-        <br>
-        <br>
-        <h5>This page manages the catalog of goods: adding new products and editing existing</h5>
+        <p class="text" align="left">You are logged in as <sec:authentication property="principal.username"/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="<c:url value="/logout"/>">Logout</a>
+        </p>
     </header>
+
+
 
     <div class="middle">
 
         <div class="container">
             <main class="content">
-
+                <p class="text">This page manages the catalog of goods: adding new products and editing existing</p>
                 <c:if test="${!empty listProducts}">
                     <br/>
                     <br/>
@@ -74,12 +73,12 @@
                         <c:if test="${product.id != 0}">
                             <tr>
                                 <td>
-                                    <form:label path="id">
+                                    <form:label path="id" cssClass="small-cell">
                                         <spring:message text="ID"/>
                                     </form:label>
                                 </td>
                                 <td>
-                                    <form:input path="id" readonly="true" size="8" disabled="true"/>
+                                    <form:input path="id" readonly="true" size="8" disabled="true" cssClass="small-cell"/>
                                     <form:hidden path="id"/>
                                 </td>
 
@@ -87,12 +86,12 @@
                         </c:if>
                         <tr>
                             <td>
-                                <form:label path="name">
+                                <form:label path="name" cssClass="small-cell">
                                     <spring:message text="Name"/>
                                 </form:label>
                             </td>
                             <td>
-                                <form:input path="name"/>
+                                <form:input path="name" cssClass="small-cell"/>
                             </td>
                             <td>
                                 <form:errors path="name" cssClass="error"/>
@@ -100,12 +99,12 @@
                         </tr>
                         <tr>
                             <td>
-                                <form:label path="category">
+                                <form:label path="category" cssClass="small-cell">
                                     <spring:message text="Category"/>
                                 </form:label>
                             </td>
                             <td>
-                                <form:select path="category">
+                                <form:select path="category" cssClass="small-cell">
                                     <form:option value="FIRST" label="First"/>
                                     <form:option value="SECOND" label="Second"/>
                                 </form:select>
@@ -113,31 +112,31 @@
                         </tr>
                         <tr>
                             <td>
-                                <form:label path="quantity">
+                                <form:label path="quantity" cssClass="small-cell">
                                     <spring:message text="Quantity"/>
                                 </form:label>
                             </td>
                             <td>
-                                <form:input path="quantity"/>
+                                <form:input path="quantity" cssClass="small-cell"/>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <form:label path="price">
+                                <form:label path="price" cssClass="small-cell">
                                     <spring:message text="Price"/>
                                 </form:label>
                             </td>
                             <td>
-                                <form:input path="price"/>
+                                <form:input path="price" cssClass="small-cell"/>
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="2" align="center" height="50px">
+                            <td align="left">
                                 <c:if test="${!empty product.name}">
-                                    <button class="button" type="submit">Edit product</button>
+                                    <button class="button-min" type="submit">Edit product</button>
                                 </c:if>
                                 <c:if test="${empty product.name}">
-                                    <button type="submit">Add product</button>
+                                    <button class="button-min" type="submit">Add product</button>
                                 </c:if>
 
                             </td>

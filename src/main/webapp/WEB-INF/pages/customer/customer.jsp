@@ -19,9 +19,7 @@
 
         <div class="container">
             <main class="content">
-                <br>
-                <br>
-                <h2>Welcome <sec:authentication property="principal.username" />!</h2>
+                <p class="text">Welcome <sec:authentication property="principal.username" />!</p>
             </main><!-- .content -->
         </div><!-- .container-->
 

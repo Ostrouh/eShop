@@ -15,14 +15,14 @@
 <div class="wrapper">
 
     <header class="header">
-        <strong>You are logged in as <sec:authentication property="principal.username"/></strong>
+        <p class="text">You are logged in as <sec:authentication property="principal.username"/></p>
     </header>
 
     <div class="middle">
 
         <div class="container">
             <main class="content">
-                <h1>Registration successfully finished!</h1>
+                <p class="text">Registration successfully finished!</p>
             </main><!-- .content -->
         </div><!-- .container-->
 

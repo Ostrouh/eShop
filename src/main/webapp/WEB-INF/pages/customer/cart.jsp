@@ -15,9 +15,9 @@
 <div class="wrapper">
 
     <header class="header">
-        <strong>You are logged in as <sec:authentication property="principal.username"/>
-            <a href="<c:url value="/logout"/>">Logout</a>
-        </strong>
+        <p class="text" align="left">You are logged in as <sec:authentication property="principal.username"/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="<c:url value="/logout"/>">Logout</a>
+        </p>
     </header>
 
     <div class="middle">
@@ -56,7 +56,7 @@
                         </tr>
                     </table>
                     <form method="post" action="/customer/checkout"/>
-                    <button type="submit">Checkout of order</button>
+                    <button class="button-min" type="submit">Checkout of order</button>
                     </form>
                 </c:if>
             </main><!-- .content -->

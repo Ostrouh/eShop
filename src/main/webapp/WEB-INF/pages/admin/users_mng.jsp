@@ -16,9 +16,9 @@
 <div class="wrapper">
 
     <header class="header">
-        <strong>You are logged in as <sec:authentication property="principal.username"/>
-            <a href="<c:url value="/logout"/>">Logout</a>
-        </strong>
+        <p class="text" align="left">You are logged in as <sec:authentication property="principal.username"/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="<c:url value="/logout"/>">Logout</a>
+        </p>
     </header>
 
     <div class="middle">
@@ -74,12 +74,12 @@
                         <table width="50%">
                             <tr>
                                 <td>
-                                    <form:label path="id">
+                                    <form:label path="id" cssClass="small-cell">
                                         <spring:message text="ID"/>
                                     </form:label>
                                 </td>
                                 <td>
-                                    <form:input path="id" readonly="true" size="8" disabled="true"/>
+                                    <form:input path="id" readonly="true" size="8" disabled="true" cssClass="small-cell"/>
                                     <form:hidden path="id"/>
                                 </td>
                                 <td>
@@ -89,12 +89,12 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <form:label path="name">
+                                    <form:label path="name" cssClass="small-cell">
                                         <spring:message text="Name"/>
                                     </form:label>
                                 </td>
                                 <td>
-                                    <form:input path="name"/>
+                                    <form:input path="name" cssClass="small-cell"/>
                                 </td>
                                 <td>
                                     <form:errors path="name" cssClass="error"/>
@@ -103,12 +103,12 @@
 
                             <tr>
                                 <td>
-                                    <form:label path="surname">
+                                    <form:label path="surname" cssClass="small-cell">
                                         <spring:message text="Surname"/>
                                     </form:label>
                                 </td>
                                 <td>
-                                    <form:input path="surname"/>
+                                    <form:input path="surname" cssClass="small-cell"/>
                                 </td>
                                 <td>
                                     <form:errors path="surname" cssClass="error"/>
@@ -116,62 +116,62 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <form:label path="address">
+                                    <form:label path="address" cssClass="small-cell">
                                         <spring:message text="Address"/>
                                     </form:label>
                                 </td>
                                 <td>
-                                    <form:input path="address"/>
+                                    <form:input path="address" cssClass="small-cell"/>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <form:label path="phoneNumber">
+                                    <form:label path="phoneNumber" cssClass="small-cell">
                                         <spring:message text="Phone"/>
                                     </form:label>
                                 </td>
                                 <td>
-                                    <form:input path="phoneNumber"/>
+                                    <form:input path="phoneNumber" cssClass="small-cell"/>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <form:label path="credential.email">
+                                    <form:label path="credential.email" cssClass="small-cell">
                                         <spring:message text="Email"/>
                                     </form:label>
                                 </td>
                                 <td>
-                                    <form:input path="credential.email" readonly="true"/>
+                                    <form:input path="credential.email" readonly="true" cssClass="small-cell"/>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <form:label path="credential.login">
+                                    <form:label path="credential.login" cssClass="small-cell">
                                         <spring:message text="Login"/>
                                     </form:label>
                                 </td>
                                 <td>
-                                    <form:input path="credential.login" readonly="true"/>
+                                    <form:input path="credential.login" readonly="true" cssClass="small-cell"/>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <form:label path="credential.password">
+                                    <form:label path="credential.password" cssClass="small-cell">
                                         <spring:message text="Password"/>
                                     </form:label>
                                 </td>
                                 <td>
-                                    <form:input path="credential.password" readonly="true"/>
+                                    <form:hidden path="credential.password" readonly="true" cssClass="small-cell"/>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <form:label path="credential.role">
+                                    <form:label path="credential.role" cssClass="small-cell">
                                         <spring:message text="Role"/>
                                     </form:label>
                                 </td>
                                 <td>
-                                    <form:select path="credential.role">
+                                    <form:select path="credential.role" cssClass="small-cell">
                                         <form:option value="ROLE_CUSTOMER" label="CUSTOMER"/>
                                         <form:option value="ROLE_ADMIN" label="ADMIN"/>
                                     </form:select>
@@ -179,12 +179,12 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <form:label path="credential.inBlackList">
+                                    <form:label path="credential.inBlackList" cssClass="small-cell">
                                         <spring:message text="Status"/>
                                     </form:label>
                                 </td>
                                 <td>
-                                    <form:select path="credential.inBlackList">
+                                    <form:select path="credential.inBlackList" cssClass="small-cell">
                                         <form:option value="false" label="Not in BL"/>
                                         <form:option value="true" label="In BL"/>
                                     </form:select>
@@ -192,7 +192,7 @@
                             </tr>
                             <tr>
                                 <td align="left">
-                                    <input class="button" type="submit"
+                                    <input class="button-min" type="submit"
                                            value="<spring:message text="Edit user"/>"/>
                                 </td>
                             </tr>

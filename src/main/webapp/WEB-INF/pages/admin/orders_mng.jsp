@@ -16,15 +16,9 @@
 <div class="wrapper">
 
     <header class="header">
-        <strong>You are logged in as <sec:authentication property="principal.username"/>
-            <a href="<c:url value="/logout"/>">Logout</a>
-        </strong>
-        <br>
-        This page realize editing the status of orders. When customer do checkout of order it get status "NEW".
-            <br>When order is sent it get status "SENT".
-            <br>When customer get order - status is "FINISHED".
-            <br>If order is cancelled - status is "CANCELLED"
-
+        <p class="text" align="left">You are logged in as <sec:authentication property="principal.username"/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="<c:url value="/logout"/>">Logout</a>
+        </p>
     </header>
 
     <div class="middle">
@@ -68,12 +62,12 @@
                         <table>
                             <tr>
                                 <td>
-                                    <form:label path="id">
+                                    <form:label path="id" cssClass="small-cell">
                                         <spring:message text="ID"/>
                                     </form:label>
                                 </td>
                                 <td>
-                                    <form:input path="id" readonly="true" size="8" disabled="true"/>
+                                    <form:input path="id" readonly="true" size="8" disabled="true" cssClass="small-cell"/>
                                     <form:hidden path="id"/>
                                 </td>
                             </tr>
@@ -89,12 +83,12 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <form:label path="status">
+                                    <form:label path="status" cssClass="small-cell">
                                         <spring:message text="Order status"/>
                                     </form:label>
                                 </td>
                                 <td>
-                                    <form:select path="status">
+                                    <form:select path="status" cssClass="small-cell">
                                         <form:option value="NEW" label="NEW"/>
                                         <form:option value="SENT" label="SENT"/>
                                         <form:option value="FINISHED" label="FINISHED"/>
@@ -104,13 +98,24 @@
                             </tr>
 
                             <tr>
-                                <td colspan="2" align="center" height="50px">
-                                    <button class="button" type="submit">Edit status</button>
+                                <td align="left">
+                                    <button class="button-min" type="submit">Edit status</button>
                                 </td>
                             </tr>
                         </table>
                     </form:form>
                 </c:if>
+                <br>
+                <p class="text">
+                    This page realize editing the status of orders. When customer do checkout of order it get status
+                    "NEW".
+                    <br>
+                    When order is sent it get status "SENT".
+                    <br>
+                    When customer get order - status is "FINISHED".
+                    <br>
+                    If order is cancelled - status is "CANCELLED"
+                </p>
             </main><!-- .content -->
         </div><!-- .container-->
 

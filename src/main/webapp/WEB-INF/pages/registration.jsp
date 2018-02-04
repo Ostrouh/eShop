@@ -29,15 +29,15 @@
                 <c:url var="addAction" value="/registration"/>
 
                 <form:form action="${addAction}" modelAttribute="user">
-                    <table padding="50px">
+                    <table>
                         <tr>
                             <td>
-                                <form:label path="name">
+                                <form:label path="name"  cssClass="signin">
                                     <spring:message text="Name"/>
                                 </form:label>
                             </td>
                             <td>
-                                <form:input path="name"/>
+                                <form:input path="name" cssClass="signin"/>
                             </td>
                             <td>
                                 <form:errors path="name" cssClass="error"/>
@@ -46,12 +46,12 @@
 
                         <tr>
                             <td>
-                                <form:label path="surname">
+                                <form:label path="surname" cssClass="signin">
                                     <spring:message text="Surname"/>
                                 </form:label>
                             </td>
                             <td>
-                                <form:input path="surname"/>
+                                <form:input path="surname" cssClass="signin"/>
                             </td>
                             <td>
                                 <form:errors path="surname" cssClass="error"/>
@@ -59,32 +59,32 @@
                         </tr>
                         <tr>
                             <td>
-                                <form:label path="address">
+                                <form:label path="address" cssClass="signin">
                                     <spring:message text="Address"/>
                                 </form:label>
                             </td>
                             <td>
-                                <form:input path="address"/>
+                                <form:input path="address" cssClass="signin"/>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <form:label path="phoneNumber">
+                                <form:label path="phoneNumber" cssClass="signin">
                                     <spring:message text="Phone"/>
                                 </form:label>
                             </td>
                             <td>
-                                <form:input path="phoneNumber"/>
+                                <form:input path="phoneNumber" cssClass="signin"/>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <form:label path="credential.email">
+                                <form:label path="credential.email" cssClass="signin">
                                     <spring:message text="Email"/>
                                 </form:label>
                             </td>
                             <td>
-                                <form:input path="credential.email"/>
+                                <form:input path="credential.email" cssClass="signin"/>
                             </td>
                             <td>
                                 <form:errors path="credential.email" cssClass="error"/>
@@ -92,12 +92,12 @@
                         </tr>
                         <tr>
                             <td>
-                                <form:label path="credential.login">
+                                <form:label path="credential.login" cssClass="signin">
                                     <spring:message text="Login"/>
                                 </form:label>
                             </td>
                             <td>
-                                <form:input path="credential.login"/>
+                                <form:input path="credential.login" cssClass="signin"/>
                             </td>
                             <td>
                                 <form:errors path="credential.login" cssClass="error"/>
@@ -105,12 +105,12 @@
                         </tr>
                         <tr>
                             <td>
-                                <form:label path="credential.password">
+                                <form:label path="credential.password" cssClass="signin">
                                     <spring:message text="Password"/>
                                 </form:label>
                             </td>
                             <td>
-                                <form:input path="credential.password"/>
+                                <form:input type="password" path="credential.password" cssClass="signin" />
                             </td>
                             <td>
                                 <form:errors path="credential.password" cssClass="error"/>
@@ -118,8 +118,8 @@
                         </tr>
 
                         <tr>
-                            <td colspan="2">
-                                    <input type="submit"
+                            <td align="left">
+                                    <input class="button" type="submit"
                                            value="<spring:message text="sign-up"/>"/>
                             </td>
                         </tr>

@@ -71,7 +71,7 @@
                         <h1>Edit user</h1>
                         <br>
                         <br>
-                        <table width="100%">
+                        <table width="50%">
                             <tr>
                                 <td>
                                     <form:label path="id">
@@ -191,8 +191,8 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="2" align="center">
-                                    <input type="submit"
+                                <td align="left">
+                                    <input class="button" type="submit"
                                            value="<spring:message text="Edit user"/>"/>
                                 </td>
                             </tr>

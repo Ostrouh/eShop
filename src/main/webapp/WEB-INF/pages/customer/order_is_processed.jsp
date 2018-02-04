@@ -2,8 +2,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
     <title>EShop</title>
     <style>
         <%@include file="/css/eShop_stylesheet.css"%>
@@ -34,7 +32,7 @@
 
                 <li><a href="<c:url value="/customer/cabinet"/>">My cabinet</a></li>
 
-                <li><a href="<c:url value="/customer/cart"/>">Cart</a></li>
+                <li><a href="<c:url value="/customer/cart"/>">Cart (${cart.itemsAmount})</a></li>
             </ul>
         </aside><!-- .left-sidebar -->
 

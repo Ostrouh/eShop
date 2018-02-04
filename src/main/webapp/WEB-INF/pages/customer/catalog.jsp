@@ -20,7 +20,7 @@
             <a href="<c:url value="/logout"/>">Logout</a>
         </strong>
         <br>
-        Goods in the cart is ${cart.itemsAmount}
+
     </header>
 
     <div class="middle">
@@ -68,7 +68,7 @@
 
                 <li><a href="<c:url value="/customer/cabinet"/>">My cabinet</a></li>
 
-                <li><a href="<c:url value="/customer/cart"/>">Cart</a></li>
+                <li><a href="<c:url value="/customer/cart"/>">Cart (${cart.itemsAmount})</a></li>
 
             </ul>
         </aside><!-- .left-sidebar -->

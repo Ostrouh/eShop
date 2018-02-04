@@ -18,11 +18,14 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
+
+import javax.validation.Valid;
 
 @SessionAttributes({"cart"})
 @Controller
@@ -57,7 +60,10 @@ public class RegistrationController {
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    public String registration(@ModelAttribute("user") User user, @ModelAttribute("cart") Cart cart, BindingResult bindingResult) {
+    public String registration(@Valid @ModelAttribute("user") User user,
+                               @ModelAttribute("cart") Cart cart,
+                               ModelMap model,
+                               BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
             return "registration";
@@ -70,9 +76,13 @@ public class RegistrationController {
 
         credential.setPassword(encodedPassword);
 
+        cart.setUser(user);
+        user.setCart(cart);
         credentialService.saveCredential(credential);
         userService.saveUser(user);
+        cartService.saveCart(cart);
 
+        model.addAttribute("cart", userService.getUserByLogin(credential.getLogin()).getCart());
         autoLogin(credential.getLogin(), password);
 
         return "redirect:/registration_success";

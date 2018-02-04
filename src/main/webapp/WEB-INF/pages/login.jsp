@@ -28,11 +28,11 @@
                 <form method="post" action="/login"/>
                 <h2>Login</h2>
                 <br>
-                <input type="text" name="username" placeholder="login"/>
+                <input class="signin" type="text" name="username" placeholder="login"/>
                 <br/>
-                <input id="loginPass" type="password" name="password" placeholder="password"/>
+                <input class="signin" id="loginPass" type="password" name="password" placeholder="password"/>
                 <br/>
-                <button type="submit">Login</button>
+                <button class="button" type="submit">Login</button>
                 </form>
             </main><!-- .content -->
         </div><!-- .container-->
